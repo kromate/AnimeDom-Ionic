@@ -55,7 +55,7 @@ export default {
 
 <style scooped>
 .select {
-  background: #794807d2 !important;
+  background: #077924d2 !important;
   color: black !important;
   font-weight: 600;
 }
@@ -68,7 +68,7 @@ export default {
 .card {
   padding: 0px 0.8rem;
   background-color: black;
-  color: #d79947;
+  color: #63ce7dd2;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -9,6 +9,7 @@
           </div>
         </div>
         <div>
+          <h1 class="green text-xl font-bold mb-3">{{ selected }}</h1>
           <div class="flex flex-wrap justify-start ac" v-if="!loading">
             <genresListingCard v-for="n in genresAnimeList" :data="n" :key="n" />
           </div>

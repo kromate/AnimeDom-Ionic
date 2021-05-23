@@ -6,7 +6,7 @@
     <div class="movie-card__details">
       <h4 class="movie-card__details__title text-xs text-center">{{ data.name }}</h4>
       <p class="movie-card__details__release-year text-center font-normal text-sm">
-        <span>released:</span> <em>{{ data.released }} </em>
+        <span>released:</span> <em>{{ data.release }} </em>
       </p>
 
       <button class="nominate-button movie-btn w-100" @click="direct(data.link, data.image)">
@@ -21,10 +21,6 @@ export default {
   name: "genresListingCard",
 
   props: {
-    type: {
-      type: String,
-      required: true,
-    },
     data: {
       type: Array,
       required: true,
