@@ -1,5 +1,6 @@
 <template>
   <article class="movie-card md:mr-5 ">
+    <DescriptionModal :showModal="showModal" :link="link" @close="showModal = false" />
     <div class="movie-card__image">
       <img :src="data.image" alt="Poster for Project Power" />
     </div>
@@ -11,7 +12,11 @@
       <p class="movie-card__details__release-year text-center font-normal text-sm text-green-500">
         <em>{{ data.genre }} </em>
       </p>
-      <button class="nominate-button movie-btn w-100" :href="data.link">
+      <button
+        class="nominate-button movie-btn w-100"
+        :href="data.link"
+        @click="type == 'recent' ? getLinks(data.link) : direct(data.link, data.image)"
+      >
         {{ type == "recent" ? "Download" : "View" }}
       </button>
     </div>
@@ -19,8 +24,10 @@
 </template>
 
 <script>
+import DescriptionModal from "@/components/DownloadModal.vue";
 export default {
   name: "animeCard",
+  components: { DescriptionModal },
   props: {
     type: {
       type: String,
@@ -29,6 +36,20 @@ export default {
     data: {
       type: Array,
       required: true,
+    },
+  },
+  methods: {
+    getLinks(link) {
+      let uplink = encodeURIComponent(link.trim());
+      this.link = uplink;
+      this.showModal = true;
+      console.log("object");
+    },
+    direct(link, image) {
+      this.$router.push({
+        name: "Detail",
+        query: { link: link, image: image },
+      });
     },
   },
 };
