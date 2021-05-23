@@ -7,6 +7,7 @@ export default createStore({
     searchArray: [],
     desc: null,
     homeCategoryView:"",
+    homeCategoryViewLink:"",
   },
   mutations: {
     changeMenu(state){
@@ -30,7 +31,8 @@ export default createStore({
       state.desc = data;
     },
     changeHomeCategoryView(state, payload){
-      state.homeCategoryView = payload
+      state.homeCategoryView = payload.name
+      state.homeCategoryViewLink = payload.link
     },
   },
   actions: {

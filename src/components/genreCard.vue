@@ -2,7 +2,7 @@
   <div>
     <label
       :for="cardsIcon.name"
-      @click="changeCard(cardsIcon.name)"
+      @click="changeCard(cardsIcon.name, cardsIcon.link)"
       :class="['text-xs', selected == cardsIcon.name ? 'select' : '', 'card']"
     >
       {{ cardsIcon.name }}
@@ -31,7 +31,6 @@ export default {
     return {
       inter: "",
       loaded: false,
-      selected: "",
     };
   },
   props: {
@@ -41,15 +40,14 @@ export default {
     },
   },
 
-  //   computed: {
-  //     selected() {
-  //       return this.$store.state.homeCategoryView;
-  //     },
-  //   },
+  computed: {
+    selected() {
+      return this.$store.state.homeCategoryView;
+    },
+  },
   methods: {
-    changeCard(data) {
-      this.selected = data;
-      this.$store.commit("changeHomeCategoryView", data);
+    changeCard(data, link) {
+      this.$store.commit("changeHomeCategoryView", { name: data, link: link });
     },
   },
 };

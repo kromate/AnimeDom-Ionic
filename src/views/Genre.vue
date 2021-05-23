@@ -36,6 +36,17 @@ export default {
       popularAnimeList: [],
     };
   },
+  computed: {
+    selected() {
+      return this.$store.state.homeCategoryView;
+    },
+  },
+  watch: {
+    selected() {
+      console.log(this.$store.state.homeCategoryViewLink);
+      //   https://anime-web-scraper.herokuapp.com/gl/?link=/genre/cars
+    },
+  },
   methods: {
     init() {
       fetch(`https://anime-web-scraper.herokuapp.com/genres/`)
