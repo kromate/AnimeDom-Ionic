@@ -66,3 +66,12 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+* {
+  font-family: "KoHo", sans-serif;
+}
+body {
+  background: #000 !important;
+}
+</style>

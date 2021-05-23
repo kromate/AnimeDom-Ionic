@@ -1,5 +1,5 @@
 <template>
-  <article class="movie-card md:mr-5">
+  <article class="movie-card md:mr-5 ">
     <div class="movie-card__image">
       <img
         src="https://m.media-amazon.com/images/M/MV5BYzBhOWU4ODAtZDYzYi00NDU1LWIzZWUtNDZmMDgxODljZTVmXkEyXkFqcGdeQXVyMTAwMzM3NDI3._V1_SX300.jpg"
@@ -25,15 +25,16 @@ export default {};
   display: flex;
   flex-direction: column;
   color: #fff;
-  /* width: 46%; */
+  margin-right: 1.25em;
   margin-bottom: 2.5rem;
   justify-content: space-between;
 }
-/* @media screen and (min-width: 768px) {
+@media screen and (max-width: 406px) {
   .movie-card {
-    width: 25%;
+    flex-basis: 50%;
+    margin-right: 0;
   }
-} */
+}
 .movie-card__image {
   height: auto;
   width: 150px;

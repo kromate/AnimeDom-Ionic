@@ -1,10 +1,12 @@
 <template>
   <IonContent class="mx-auto">
-    <div class="flex bg-black mx-auto">
-      <main class="flex-col mx-auto">
-        <h3 class="green text-3xl font-bold">Popular</h3>
-        <div class="flex flex-wrap justify-start">
-          <animeCard v-for="n in 10" :key="n" />
+    <div class="flex bg-black mx-auto w-100 ">
+      <main class="flex-col mx-auto container">
+        <div>
+          <h1 class="green text-4xl font-bold mb-3">Popular</h1>
+          <div class="flex flex-wrap justify-start ac">
+            <animeCard v-for="n in 10" :key="n" />
+          </div>
         </div>
       </main>
     </div>
@@ -29,11 +31,20 @@ export default {
 };
 </script>
 <style scoped>
+@media screen and (max-width: 406px) {
+  .ac {
+    justify-content: center;
+  }
+}
+
 h3 {
   font-family: "KoHo", sans-serif;
 }
 main {
-  padding: 2rem;
-  overflow-y: auto;
+  padding: 6px;
+}
+.w-100 {
+  width: 100vw;
+  min-height: 100vh;
 }
 </style>

@@ -4,6 +4,9 @@ http://ionicframework.com/docs/theming/ */
 /** Ionic CSS Variables **/
 @import url("https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,400;0,500;1,300;1,400&display=swap");
 
+:host {
+  background-color: #000000;
+}
 :root {
   /** primary **/
   --ion-color-primary: #3880ff;
