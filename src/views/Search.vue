@@ -1,10 +1,15 @@
 <template>
   <IonContent class="mx-auto">
     <div class="flex bg-black mx-auto w-100 ">
-      <main class="flex-col mx-auto container" v-if="recentAnimeList.length">
+      <main class="flex-col mx-auto container" v-if="true">
         <div>
           <h1 class="green text-4xl font-bold mb-3">Recent</h1>
-          <div class="flex flex-wrap justify-start ac"></div>
+          <div class="container__item">
+            <form class="form">
+              <input type="email" class="form__field" placeholder="Your E-Mail Address" />
+              <button type="button" class="btn btn--primary btn--inside uppercase">Send</button>
+            </form>
+          </div>
         </div>
         <div>
           <h1 class="green text-4xl font-bold mb-3">Popular</h1>
