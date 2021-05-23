@@ -10,25 +10,25 @@ const routes = [
     path: "/home",
     name: "Home",
     component: () => import("@/views/Home.vue"),
-    meta: {
-      requiresGuest: true
-    }
+
   },
   {
     path: "/search",
     name: "Search",
     component: () => import("@/views/Search.vue"),
-    meta: {
-      requiresGuest: true
-    }
+
   },
   {
     path: "/detail",
     name: "Detail",
     component: () => import("@/views/Detail.vue"),
-    meta: {
-      requiresGuest: true
-    }
+
+  },
+  {
+    path: "/genre",
+    name: "Genre",
+    component: () => import("@/views/Genre.vue"),
+
   },
 ]
 

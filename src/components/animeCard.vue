@@ -28,6 +28,7 @@ import DescriptionModal from "@/components/DownloadModal.vue";
 export default {
   name: "animeCard",
   components: { DescriptionModal },
+
   props: {
     type: {
       type: String,
@@ -38,12 +39,17 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      showModal: false,
+      link: "",
+    };
+  },
   methods: {
     getLinks(link) {
       let uplink = encodeURIComponent(link.trim());
       this.link = uplink;
       this.showModal = true;
-      console.log("object");
     },
     direct(link, image) {
       this.$router.push({

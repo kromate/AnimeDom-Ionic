@@ -28,7 +28,7 @@
             <ion-item> <ion-icon :icon="search"></ion-icon>Search</ion-item>
           </router-link>
 
-          <router-link to="/genres">
+          <router-link to="/genre">
             <ion-item> <ion-icon :icon="listCircle"></ion-icon>Genre</ion-item>
           </router-link>
 

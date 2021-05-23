@@ -5,6 +5,7 @@
         <ion-title>{{ $route.name }}</ion-title>
 
         <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
           <ion-menu-button menu="main-menu"> </ion-menu-button>
         </ion-buttons>
 
