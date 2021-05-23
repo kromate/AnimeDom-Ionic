@@ -279,10 +279,10 @@ p {
   height: 170px;
   width: 350px;
   background-color: #18540f;
-  background: linear-gradient(90deg, #6a67b1 0%, #18540f 100%);
-  box-shadow: 0px 1px 10px rgba(98, 140, 255, 0.5);
-  transform: rotate(-15deg);
-  border-radius: 10px 10px 10px 50px;
+  background: linear-gradient(90deg, #319e5d 0%, #18540f 100%);
+  box-shadow: 0px 1px 10px rgb(98 140 255 / 50%);
+  transform: rotate(359deg);
+  border-radius: 10px 10px 10px 43px;
   margin-left: -18px;
   margin-top: -50px;
   margin-bottom: 60px;
