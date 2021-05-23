@@ -26,7 +26,7 @@ export default {
 <style scoped>
 .text {
   text-align: center;
-  color: #6c63ff;
+  color: #18540f;
   font-weight: 550;
   margin: 15px 4px;
 }

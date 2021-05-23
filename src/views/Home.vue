@@ -78,9 +78,9 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #6c63ff;
+  border: 1px solid #18540f;
   cursor: pointer;
-  color: #6c63ff;
+  color: #18540f;
 }
 main {
   padding: 2rem;
@@ -129,7 +129,7 @@ main {
 .dotsContainer #dot3 {
   width: 10px;
   height: 10px;
-  background: #6c63ff;
+  background: #18540f;
   border-radius: 100%;
   margin: 5px;
   transition: all 0.5s ease-in-out;

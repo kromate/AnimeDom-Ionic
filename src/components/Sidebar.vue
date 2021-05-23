@@ -176,7 +176,7 @@ export default {
 
 <style scoped>
 .download {
-  --background: #6c63ff;
+  --background: #18540f;
   color: white;
   /* box-shadow: 1px 1px 0 #1d8758, 0 0 20px 5px #c0ffe4, inset 2px 2px 0 #d3ffec; */
   animation: glow 1s infinite forwards;
@@ -185,10 +185,10 @@ export default {
 /* animates box shadow glow effect */
 @keyframes glow {
   0% {
-    box-shadow: 1px 1px #6c63ff, 0 0 20px 5px #8b86df, inset 2px 2px #aba9d3;
+    box-shadow: 1px 1px #18540f, 0 0 20px 5px #8b86df, inset 2px 2px #aba9d3;
   }
   50% {
-    box-shadow: 1px 1px #6c63ff, 0 0 16px 8px #8b86df, inset 2px 2px #aba9d3;
+    box-shadow: 1px 1px #18540f, 0 0 16px 8px #8b86df, inset 2px 2px #aba9d3;
   }
   /* 100% {
     box-shadow: 1px 1px #1d8758, 0 0 20px 5px #8fffcf, inset 2px 2px #d3ffec;
@@ -243,7 +243,7 @@ ion-button {
 }
 
 .online {
-  --background: #6c63ff;
+  --background: #18540f;
 }
 .offline {
   --background: #97969e;
@@ -278,8 +278,8 @@ p {
 .menu_header {
   height: 170px;
   width: 350px;
-  background-color: #6c63ff;
-  background: linear-gradient(90deg, #6a67b1 0%, #6c63ff 100%);
+  background-color: #18540f;
+  background: linear-gradient(90deg, #6a67b1 0%, #18540f 100%);
   box-shadow: 0px 1px 10px rgba(98, 140, 255, 0.5);
   transform: rotate(-15deg);
   border-radius: 10px 10px 10px 50px;

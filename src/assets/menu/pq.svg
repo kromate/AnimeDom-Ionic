@@ -4,10 +4,10 @@
 </g>
 <defs>
 <linearGradient id="paint0_linear" x1="75" y1="25" x2="75" y2="131.25" gradientUnits="userSpaceOnUse">
-<stop stop-color="#6C63FF"/>
-<stop offset="0.348958" stop-color="#6C63FF" stop-opacity="0.907031"/>
-<stop offset="0.614583" stop-color="#6C63FF" stop-opacity="0.953125"/>
-<stop offset="1" stop-color="#6C63FF" stop-opacity="0.85"/>
+<stop stop-color="#18540f"/>
+<stop offset="0.348958" stop-color="#18540f" stop-opacity="0.907031"/>
+<stop offset="0.614583" stop-color="#18540f" stop-opacity="0.953125"/>
+<stop offset="1" stop-color="#18540f" stop-opacity="0.85"/>
 </linearGradient>
 <clipPath id="clip0">
 <rect width="150" height="150" fill="white"/>

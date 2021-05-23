@@ -12,10 +12,9 @@
     </div>
 
     <p class="details">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe magnam
-      dignissimos mollitia reprehenderit debitis optio adipisci ut corporis,
-      sunt deleniti est tempora fugiat sapiente eaque voluptatum, culpa, cum
-      tempore odio?
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe magnam dignissimos mollitia
+      reprehenderit debitis optio adipisci ut corporis, sunt deleniti est tempora fugiat sapiente
+      eaque voluptatum, culpa, cum tempore odio?
     </p>
   </div>
 </template>
@@ -24,8 +23,8 @@
 import Rating from "@/components/Rating";
 export default {
   components: {
-    Rating
-  }
+    Rating,
+  },
 };
 </script>
 
@@ -60,7 +59,7 @@ export default {
   max-width: 500px;
 }
 .name {
-  color: #6c63ff;
+  color: #18540f;
   font-weight: 550 !important;
 }
 .content {
@@ -74,6 +73,6 @@ export default {
   padding: 0.8rem 0.4rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 1px 2px 3px #6c63ff;
+  box-shadow: 1px 2px 3px #18540f;
 }
 </style>

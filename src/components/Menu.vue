@@ -143,7 +143,7 @@ export default {
 <style scoped>
 .box-text {
   text-align: center;
-  color: #6c63ff !important;
+  color: #18540f !important;
 }
 .row {
   display: flex;
@@ -156,7 +156,7 @@ export default {
   background-color: #fff;
   border-radius: 10px;
   margin: 15px 25px !important;
-  border: 1px solid #6c63ff;
+  border: 1px solid #18540f;
 }
 @media screen and (max-width: 1300px) {
   .box {
@@ -204,7 +204,7 @@ a {
 }
 
 .menu {
-  color: #6c63ff;
+  color: #18540f;
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 1px 4px 2px 0 rgba(0, 0, 0, 0.14), -3px 4px 1px -2px rgba(0, 0, 0, 0.12),
     1px 3px 5px 2px rgba(0, 0, 0, 0.2);
@@ -216,7 +216,7 @@ a {
   z-index: 500000;
 }
 .menu:hover {
-  background-color: #6c63ff;
+  background-color: #18540f;
   color: white;
   cursor: pointer;
 }
