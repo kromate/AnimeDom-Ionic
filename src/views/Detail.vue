@@ -1,98 +1,102 @@
-<template>
-  <div class="container" v-if="data.name">
-    <DescriptionModal :showModal="showModal" :link="link" @close="showModal = false" />
-    <div class="details">
-      <h2>{{ data.name }}</h2>
-      <p>
-        <span class="title">
-          summary
-        </span>
-        <br />
-        {{ data.summary }}
-      </p>
+d<template>
+  ate
+  <IonContent>
+    <div class="container mx-auto" v-if="data.name">
+      <DescriptionModal :showModal="showModal" :link="link" @close="showModal = false" />
+      <div class="details">
+        <h2>{{ data.name }}</h2>
+        <p>
+          <span class="title">
+            summary
+          </span>
+          <br />
+          {{ data.summary }}
+        </p>
 
-      <p>
-        <span class="title">
-          Other Names
-        </span>
-        <br />
-        {{ data.otherNames }}
-      </p>
+        <p>
+          <span class="title">
+            Other Names
+          </span>
+          <br />
+          {{ data.otherNames }}
+        </p>
 
-      <p>
-        <span class="title">
-          Release
-        </span>
-        <br />
-        {{ data.release }}
-      </p>
+        <p>
+          <span class="title">
+            Release
+          </span>
+          <br />
+          {{ data.release }}
+        </p>
 
-      <p>
-        <span class="title">
-          Type
-        </span>
-        <br />
-        {{ data.type }}
-      </p>
+        <p>
+          <span class="title">
+            Type
+          </span>
+          <br />
+          {{ data.type }}
+        </p>
 
-      <p>
-        <span class="title">
-          Genre
-        </span>
-        <br />
-        {{ data.genre }}
-      </p>
+        <p>
+          <span class="title">
+            Genre
+          </span>
+          <br />
+          {{ data.genre }}
+        </p>
 
-      <div class="epic">
-        <span class="title ept">
-          Episodes
-        </span>
-        <br />
-        <div class="blc">
+        <div class="epic">
+          <span class="title ept">
+            Episodes
+          </span>
+          <br />
+          <div class="blc">
+            <div
+              class="epi"
+              v-for="(ep, index) in data.episodes"
+              :key="index"
+              @click="getEpis(data.id, ep.start, ep.end, data.name)"
+            >
+              {{ ep.start }} - {{ ep.end }}
+            </div>
+          </div>
+        </div>
+
+        <!-- EPISODES -->
+        <div v-if="show" class="epicES">
+          <Loader v-if="!Episodes.length" />
           <div
-            class="epi"
-            v-for="(ep, index) in data.episodes"
+            v-else
+            class="epiES"
+            v-for="(ep, index) in Episodes"
             :key="index"
-            @click="getEpis(data.id, ep.start, ep.end, data.name)"
+            @click="getLinks(ep.link)"
           >
-            {{ ep.start }} - {{ ep.end }}
+            {{ ep.name }}
           </div>
         </div>
       </div>
 
-      <!-- EPISODES -->
-      <div v-if="show" class="epicES">
-        <Loader v-if="!Episodes.length" />
-        <div
-          v-else
-          class="epiES"
-          v-for="(ep, index) in Episodes"
-          :key="index"
-          @click="getLinks(ep.link)"
-        >
-          {{ ep.name }}
-        </div>
+      <div class="detImg ">
+        <img :src="$route.query.image" alt="" />
       </div>
     </div>
 
-    <div class="detImg">
-      <img :src="$route.query.image" alt="" />
+    <div class="container2" v-else>
+      <div>
+        <Loader w="233.39" h="340" b="8" />
+        <p class="lood">loading....</p>
+      </div>
     </div>
-  </div>
-
-  <div class="container2" v-else>
-    <div>
-      <Loader w="233.39" h="340" b="8" />
-      <p class="lood">loading....</p>
-    </div>
-  </div>
+  </IonContent>
 </template>
 
 <script>
+import { IonContent } from "@ionic/vue";
 import DescriptionModal from "@/components/DownloadModal.vue";
 import Loader from "@/components/Loader.vue";
 export default {
-  components: { DescriptionModal, Loader },
+  components: { DescriptionModal, Loader, IonContent },
   name: "Details",
   data() {
     return {
@@ -215,9 +219,9 @@ export default {
   font-weight: 600;
 }
 img {
-  position: fixed;
-  top: 49px;
-  right: 54px;
+  position: sticky;
+  top: 70px;
+  /* right: 54px; */
 }
 .title {
   font-weight: 700;
@@ -299,7 +303,7 @@ a {
   margin-top: 2rem;
 }
 h2 {
-  margin-top: 5rem;
+  margin-top: 1rem;
   font-size: 2.5rem;
   text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.315), 0px 4px 2px rgba(0, 0, 0, 0.541);
 }
@@ -314,7 +318,8 @@ h1 {
   display: flex;
   justify-content: space-between;
   margin-top: 1.5rem;
-  color: #d79947;
+  color: #359c26;
+  max-width: 800px;
 }
 .container2 {
   display: flex;
@@ -322,17 +327,22 @@ h1 {
   margin-top: 1.5rem;
 }
 .details {
+  order: 2;
   flex-basis: 60%;
   margin: 12px;
   margin-left: 40px;
   max-width: 400px;
 }
 .detImg {
+  order: 1;
   flex-basis: 40%;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 @media (max-width: 800px) {
+  h2 {
+    margin-top: 5rem;
+  }
   img {
     position: static;
   }
