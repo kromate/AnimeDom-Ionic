@@ -5,7 +5,7 @@
         <div>
           <h1 class="green text-4xl font-bold mb-3">Genres</h1>
           <div class="flex flex-wrap justify-start ac">
-            <genreCard v-for="n in genreAnimeList" :cardsIcon="n" :key="n" type="recent" />
+            <genreCard v-for="n in genreAnimeList" :cardsIcon="n" :key="n" class="genreCard" />
           </div>
         </div>
         <!-- <div>
@@ -74,5 +74,8 @@ main {
 .w-100 {
   width: 100vw;
   min-height: 100vh;
+}
+.genreCard {
+  width: fit-content;
 }
 </style>

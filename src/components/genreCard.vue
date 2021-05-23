@@ -74,8 +74,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 15px 7px;
-  border-radius: 3px;
+  margin: 2px;
+  border-radius: 2px;
 
   cursor: pointer;
 }
