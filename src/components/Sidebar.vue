@@ -25,14 +25,14 @@
           </router-link>
 
           <router-link to="/pastquestions">
-            <ion-item> <ion-icon :icon="book"></ion-icon> Past Questions </ion-item>
+            <ion-item> <ion-icon :icon="search"></ion-icon>Search</ion-item>
           </router-link>
 
           <router-link to="/courses">
-            <ion-item> <ion-icon :icon="newspaper"></ion-icon> Course Outline </ion-item>
+            <ion-item> <ion-icon :icon="listCircle"></ion-icon>Genre</ion-item>
           </router-link>
 
-          <router-link class="box" to="/tutor">
+          <!-- <router-link class="box" to="/tutor">
             <ion-item> <ion-icon :icon="people"></ion-icon> Find a Tutor </ion-item>
           </router-link>
 
@@ -59,6 +59,7 @@
           <div class="row" style="cursor:pointer">
             <ion-item @click="signOut"> <ion-icon :icon="exit"></ion-icon> Sign Out </ion-item>
           </div>
+         -->
         </ion-list>
       </div>
     </ion-content>
@@ -78,19 +79,7 @@ import {
   IonList,
   menuController,
 } from "@ionic/vue";
-import {
-  add,
-  home,
-  exit,
-  book,
-  people,
-  newspaper,
-  personCircle,
-  helpCircle,
-  chatbubbles,
-  hourglass,
-  download,
-} from "ionicons/icons";
+import { add, home, search } from "ionicons/icons";
 export default {
   name: "Menu",
   components: {
@@ -107,15 +96,8 @@ export default {
       deferredPrompt: "",
       home,
       add,
-      exit,
-      book,
-      people,
-      newspaper,
-      personCircle,
-      helpCircle,
-      chatbubbles,
-      hourglass,
-      download,
+      search,
+      listCircle,
       connected: navigator.onLine,
     };
   },
