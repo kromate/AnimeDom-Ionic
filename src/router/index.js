@@ -14,6 +14,14 @@ const routes = [
       requiresGuest: true
     }
   },
+  {
+    path: "/search",
+    name: "Search",
+    component: () => import("@/views/Search.vue"),
+    meta: {
+      requiresGuest: true
+    }
+  },
 ]
 
 const router = createRouter({
