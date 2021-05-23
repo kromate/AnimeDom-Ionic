@@ -3,7 +3,10 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    menu:false
+    menu:false,
+    searchArray: [],
+    desc: null,
+    homeCategoryView:"",
   },
   mutations: {
     changeMenu(state){
@@ -18,6 +21,16 @@ export default createStore({
         return null
       }
 
+    },
+
+    addsearchedRes(state, data) {
+      state.searchArray = data;
+    },
+    updateDesc(state, data) {
+      state.desc = data;
+    },
+    changeHomeCategoryView(state, payload){
+      state.homeCategoryView = payload
     },
   },
   actions: {

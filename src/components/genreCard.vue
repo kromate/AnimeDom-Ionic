@@ -49,7 +49,7 @@ export default {
   methods: {
     changeCard(data) {
       this.selected = data;
-      //   this.$store.commit("changeHomeCategoryView", data);
+      this.$store.commit("changeHomeCategoryView", data);
     },
   },
 };
