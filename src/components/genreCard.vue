@@ -1,15 +1,13 @@
 <template>
-  <div class="catCardCont">
-    <div v-for="(card, index) in cardsIcon" :key="index">
-      <label
-        :for="card.name"
-        @click="changeCard(card.name)"
-        :class="[selected == card.name ? 'select' : '', 'card']"
-      >
-        {{ card.name }}
-      </label>
-      <input type="radio" :id="card.name" :value="card.name" name="item" />
-    </div>
+  <div>
+    <label
+      :for="cardsIcon.name"
+      @click="changeCard(cardsIcon.name)"
+      :class="['text-xs', selected == cardsIcon.name ? 'select' : '', 'card']"
+    >
+      {{ cardsIcon.name }}
+    </label>
+    <input type="radio" :id="cardsIcon.name" :value="cardsIcon.name" name="item" />
 
     <!-- <div v-for="(card, index) in cardsImage" :key="index">
       <label
@@ -42,6 +40,7 @@ export default {
       required: true,
     },
   },
+
   //   computed: {
   //     selected() {
   //       return this.$store.state.homeCategoryView;
@@ -62,14 +61,7 @@ export default {
   color: black !important;
   font-weight: 600;
 }
-.catCardCont {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  flex-direction: column;
-}
+
 @media (max-width: 800px) {
   .catCardCont {
     flex-direction: row;
@@ -83,9 +75,8 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin: 15px 7px;
-  border-radius: 7px;
-  width: 110px;
-  height: 50px;
+  border-radius: 3px;
+
   cursor: pointer;
 }
 .card + input {
