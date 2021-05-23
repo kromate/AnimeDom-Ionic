@@ -1,5 +1,5 @@
 <template>
-  <article class="movie-card mx-1">
+  <article class="movie-card md:mr-5">
     <div class="movie-card__image">
       <img
         src="https://m.media-amazon.com/images/M/MV5BYzBhOWU4ODAtZDYzYi00NDU1LWIzZWUtNDZmMDgxODljZTVmXkEyXkFqcGdeQXVyMTAwMzM3NDI3._V1_SX300.jpg"
@@ -36,7 +36,7 @@ export default {};
 } */
 .movie-card__image {
   height: auto;
-  width: 250px;
+  width: 150px;
   object-fit: cover;
 }
 
@@ -67,6 +67,6 @@ export default {};
   cursor: pointer;
 }
 .movie-card__details {
-  width: 250px;
+  width: 150px;
 }
 </style>

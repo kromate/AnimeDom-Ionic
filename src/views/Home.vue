@@ -1,9 +1,9 @@
 <template>
-  <IonContent class="">
-    <div class="flex bg-black">
-      <main class="flex-col">
-        <h3 class="green text-3xl ">Popular</h3>
-        <div class="flex flex-wrap justify-center">
+  <IonContent class="mx-auto">
+    <div class="flex bg-black mx-auto">
+      <main class="flex-col mx-auto">
+        <h3 class="green text-3xl font-bold">Popular</h3>
+        <div class="flex flex-wrap justify-start">
           <animeCard v-for="n in 10" :key="n" />
         </div>
       </main>
@@ -29,6 +29,9 @@ export default {
 };
 </script>
 <style scoped>
+h3 {
+  font-family: "KoHo", sans-serif;
+}
 main {
   padding: 2rem;
   overflow-y: auto;

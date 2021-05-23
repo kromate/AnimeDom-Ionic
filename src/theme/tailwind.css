@@ -13699,7 +13699,7 @@ video {
   color: rgba(39, 103, 73, var(--text-opacity));
 }
 .green {
-  color: #18540f;
+  color: #18540f !important;
 }
 .text-teal-100 {
   --text-opacity: 1;
