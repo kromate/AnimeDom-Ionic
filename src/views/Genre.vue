@@ -8,12 +8,12 @@
             <genreCard v-for="n in genreAnimeList" :cardsIcon="n" :key="n" class="genreCard" />
           </div>
         </div>
-        <!-- <div>
-          <h1 class="green text-4xl font-bold mb-3">Popular</h1>
-          <div class="flex flex-wrap justify-start ac">
-            <genreCard v-for="n in popularAnimeList" :data="n" :key="n" type="popular" />
+        <div>
+          <div class="flex flex-wrap justify-start ac" v-if="!loading">
+            <genresListingCard v-for="n in genresAnimeList" :data="n" :key="n" />
           </div>
-        </div> -->
+          <Loader v-else />
+        </div>
       </main>
 
       <div v-else class="mx-auto mt-5">
@@ -26,14 +26,15 @@
 <script>
 import { IonContent } from "@ionic/vue";
 import genreCard from "@/components/genreCard.vue";
+import genresListingCard from "@/components/genresListingCard.vue";
 import Loader from "@/components/Loader.vue";
 export default {
-  components: { genreCard, IonContent, Loader },
+  components: { genreCard, genresListingCard, IonContent, Loader },
   data() {
     return {
-      listening: false,
+      loading: false,
       genreAnimeList: [],
-      popularAnimeList: [],
+      genresAnimeList: [],
     };
   },
   computed: {
@@ -43,8 +44,21 @@ export default {
   },
   watch: {
     selected() {
-      console.log(this.$store.state.homeCategoryViewLink);
-      //   https://anime-web-scraper.herokuapp.com/gl/?link=/genre/cars
+      this.loading = true;
+      fetch(
+        `https://anime-web-scraper.herokuapp.com/gl/?link=${this.$store.state.homeCategoryViewLink}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          this.genresAnimeList = data;
+          this.loading = false;
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("something went wrong");
+          this.loading = false;
+        });
     },
   },
   methods: {

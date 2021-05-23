@@ -31,6 +31,7 @@ export default createStore({
       state.desc = data;
     },
     changeHomeCategoryView(state, payload){
+
       state.homeCategoryView = payload.name
       state.homeCategoryViewLink = payload.link
     },
