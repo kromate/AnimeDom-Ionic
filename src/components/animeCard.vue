@@ -37,4 +37,31 @@ export default {};
 .movie-card__image {
   width: 100%;
 }
+
+.movie-card .disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  background-color: rgba(27, 27, 27, 0.62);
+  border-color: rgba(27, 27, 27, 0.62);
+}
+
+.movie-card .nominate-button {
+  width: 100%;
+  margin: 1rem 0 0;
+  background: #ce8437;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  padding: 0.7rem 0;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  font-size: 0.7rem;
+  overflow: hidden;
+  position: relative;
+  transition: background 0.2s linear;
+  cursor: pointer;
+}
 </style>
