@@ -278,7 +278,7 @@ a {
   font-size: 1.2rem;
   text-align: center;
   font-weight: 600;
-  color: #d79947;
+  color: #18540f;
 }
 .text {
   margin-left: 1rem;
@@ -290,7 +290,7 @@ a {
 }
 .sItem {
   margin: 0px 4px;
-  border: 1px solid #d79947;
+  border: 1px solid #18540f;
   padding: 3px;
   display: flex;
   justify-content: center;
@@ -298,7 +298,7 @@ a {
   width: 20px;
   height: 20px;
   font-weight: 400;
-  color: #d79947;
+  color: #18540f;
 }
 .size {
   display: flex;
@@ -347,6 +347,7 @@ h1 {
   }
   img {
     position: static;
+    max-width: 90%;
   }
   .detImg {
     order: 1;

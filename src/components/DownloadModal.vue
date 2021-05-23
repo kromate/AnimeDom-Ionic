@@ -44,6 +44,7 @@ export default {
   },
   methods: {
     getDetails() {
+      this.options = [];
       console.log(`https://anime-web-scraper.herokuapp.com/downloadLink/?link=${this.link}`);
       fetch(`https://anime-web-scraper.herokuapp.com/downloadLink/?link=${this.link}`)
         .then((response) => response.json())
