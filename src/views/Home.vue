@@ -3,9 +3,15 @@
     <div class="flex bg-black mx-auto w-100 ">
       <main class="flex-col mx-auto container">
         <div>
+          <h1 class="green text-4xl font-bold mb-3">Recent</h1>
+          <div class="flex flex-wrap justify-start ac">
+            <animeCard v-for="n in recentAnimeList" :data="n" :key="n" type="recent" />
+          </div>
+        </div>
+        <div>
           <h1 class="green text-4xl font-bold mb-3">Popular</h1>
           <div class="flex flex-wrap justify-start ac">
-            <animeCard v-for="n in 10" :key="n" />
+            <animeCard v-for="n in popularAnimeList" :data="n" :key="n" type="popular" />
           </div>
         </div>
       </main>
@@ -21,12 +27,42 @@ export default {
   data() {
     return {
       listening: false,
+      recentAnimeList: [],
+      popularAnimeList: [],
     };
   },
   methods: {
-    listen() {
-      this.listening = !this.listening;
+    init() {
+      fetch(`https://anime-web-scraper.herokuapp.com/recent/?page=1`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          this.recentAnimeList = data;
+          //   this.$store.commit("addsearchedRes", data);
+          //   this.loading = false;
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("something went wrong");
+          this.loading = false;
+        });
+      fetch(`https://anime-web-scraper.herokuapp.com/popular/?page=1`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          this.popularAnimeList = data;
+          //   this.$store.commit("addsearchedRes", data);
+          //   this.loading = false;
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("something went wrong");
+          this.loading = false;
+        });
     },
+  },
+  created() {
+    this.init();
   },
 };
 </script>

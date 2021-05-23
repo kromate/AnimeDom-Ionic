@@ -1,15 +1,17 @@
 <template>
   <article class="movie-card md:mr-5 ">
     <div class="movie-card__image">
-      <img
-        src="https://m.media-amazon.com/images/M/MV5BYzBhOWU4ODAtZDYzYi00NDU1LWIzZWUtNDZmMDgxODljZTVmXkEyXkFqcGdeQXVyMTAwMzM3NDI3._V1_SX300.jpg"
-        alt="Poster for Project Power"
-      />
+      <img :src="data.image" alt="Poster for Project Power" />
     </div>
     <div class="movie-card__details">
-      <h4 class="movie-card__details__title">Project Power</h4>
-      <p class="movie-card__details__release-year"><span>Released:</span> <em>2020 </em></p>
-      <button class="nominate-button movie-btn w-100">
+      <h4 class="movie-card__details__title text-xs text-center">{{ data.name }}</h4>
+      <p class="movie-card__details__release-year text-center font-normal text-sm">
+        <span>Lastest:</span> <em>{{ data.latest }} </em>
+      </p>
+      <p class="movie-card__details__release-year text-center font-normal text-sm text-green-500">
+        <em>{{ data.genre }} </em>
+      </p>
+      <button class="nominate-button movie-btn w-100" :href="data.link">
         View <i class="far fa-check-circle"></i>
       </button>
     </div>
@@ -17,7 +19,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "animeCard",
+  props: {
+    type: {
+      type: String,
+      required: true,
+    },
+    data: {
+      type: Array,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style scoped>
