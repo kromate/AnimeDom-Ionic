@@ -6,13 +6,11 @@
     <div class="movie-card__details">
       <h4 class="movie-card__details__title text-xs text-center">{{ data.name }}</h4>
       <p class="movie-card__details__release-year text-center font-normal text-sm">
-        <span>Lastest:</span> <em>{{ type == "recent" ? data.episode : data.latest }} </em>
+        <em>{{ data.release }} </em>
       </p>
-      <p class="movie-card__details__release-year text-center font-normal text-sm text-green-500">
-        <em>{{ data.genre }} </em>
-      </p>
+
       <button class="nominate-button movie-btn w-100" :href="data.link">
-        {{ type == "recent" ? "Download" : "View" }}
+        {{ "View" }}
       </button>
     </div>
   </article>
@@ -22,10 +20,6 @@
 export default {
   name: "animeCard",
   props: {
-    type: {
-      type: String,
-      required: true,
-    },
     data: {
       type: Array,
       required: true,

@@ -23,7 +23,7 @@ export default {};
   left: 8px;
   width: 16px;
   background: #fff;
-  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  animation: lds-facebook 0.8s forwards infinite;
 }
 .lds-facebook div:nth-child(1) {
   left: 8px;

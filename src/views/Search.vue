@@ -3,55 +3,72 @@
     <div class="flex bg-black mx-auto w-100 ">
       <main class="flex-col mx-auto container" v-if="true">
         <div>
-          <h1 class="green text-4xl font-bold mb-3">Recent</h1>
+          <h1 class="green text-4xl font-bold mb-3">Search</h1>
           <div class="container__item">
             <form class="form">
-              <input type="email" class="form__field" placeholder="Your E-Mail Address" />
-              <button type="button" class="btn btn--primary btn--inside uppercase">Send</button>
+              <input
+                type="text"
+                class="form__field"
+                placeholder="Your an Anime Name"
+                v-model="searchValue"
+              />
+              <button
+                type="button"
+                class="btn btn--primary btn--inside uppercase"
+                @click="search()"
+              >
+                Send
+              </button>
             </form>
           </div>
         </div>
         <div>
-          <h1 class="green text-4xl font-bold mb-3">Popular</h1>
+          <h1 class="green text-xl font-bold mb-3">{{ title }}</h1>
           <div class="flex flex-wrap justify-start ac">
-            <animeCard v-for="n in popularAnimeList" :data="n" :key="n" type="popular" />
+            <searchCard v-for="n in searchAnimeList" :data="n" :key="n" type="popular" />
           </div>
+          <Loader v-if="loading" />
         </div>
       </main>
-
-      <div v-else class="mx-auto mt-5">
-        <Loader />
-      </div>
     </div>
   </IonContent>
 </template>
 
 <script>
 import { IonContent } from "@ionic/vue";
-import animeCard from "@/components/animeCard.vue";
+import searchCard from "@/components/searchCard.vue";
 import Loader from "@/components/Loader.vue";
 export default {
-  components: { animeCard, IonContent, Loader },
+  components: { searchCard, IonContent, Loader },
   data() {
     return {
-      listening: false,
-      recentAnimeList: [],
-      popularAnimeList: [],
+      loading: false,
+      title: "",
+      searchValue: "",
+      searchAnimeList: [],
     };
   },
   methods: {
     search() {
-      fetch(`https://anime-web-scraper.herokuapp.com/recent/?page=1`)
+      this.title = "searching...";
+      this.loading = true;
+      this.searchAnimeList = [];
+      let value = encodeURIComponent(this.searchValue);
+
+      fetch(`https://anime-web-scraper.herokuapp.com/search/?name=${value}`)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          this.recentAnimeList = data;
+          // console.log(data);
+          this.title = `showing ${data.length} animes for ${this.searchValue}`;
+          this.loading = false;
+          this.searchAnimeList = data;
           //   this.$store.commit("addsearchedRes", data);
           //   this.loading = false;
         })
         .catch((err) => {
           console.log(err);
           alert("something went wrong");
+          this.title = `Oops, Something went Wrong. Try again later`;
           this.loading = false;
         });
     },
@@ -74,5 +91,51 @@ main {
 .w-100 {
   width: 100vw;
   min-height: 100vh;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.btn {
+  display: inline-block;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  transition: all 200ms ease-in;
+  cursor: pointer;
+}
+.btn--primary {
+  background: #18540f;
+  color: #fff;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  padding: 8px 36px;
+}
+.btn--primary:hover {
+  background: #648e33;
+  box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, 0.2);
+}
+.btn--primary:active {
+  background: #7f8ff4;
+  box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, 0.2);
+}
+.btn--inside {
+  margin-left: -90px;
+}
+
+.form__field {
+  max-width: 80vw;
+  width: 360px;
+  background: #fff;
+  color: #423e3e;
+  font: inherit;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  border: 0;
+  outline: 0;
+  padding: 13px 18px;
 }
 </style>

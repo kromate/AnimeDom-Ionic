@@ -22,6 +22,14 @@ const routes = [
       requiresGuest: true
     }
   },
+  {
+    path: "/detail",
+    name: "Detail",
+    component: () => import("@/views/Detail.vue"),
+    meta: {
+      requiresGuest: true
+    }
+  },
 ]
 
 const router = createRouter({
