@@ -1,5 +1,5 @@
 <template>
-  <article class="movie-card">
+  <article class="movie-card mx-1">
     <div class="movie-card__image">
       <img
         src="https://m.media-amazon.com/images/M/MV5BYzBhOWU4ODAtZDYzYi00NDU1LWIzZWUtNDZmMDgxODljZTVmXkEyXkFqcGdeQXVyMTAwMzM3NDI3._V1_SX300.jpg"
@@ -9,8 +9,8 @@
     <div class="movie-card__details">
       <h4 class="movie-card__details__title">Project Power</h4>
       <p class="movie-card__details__release-year"><span>Released:</span> <em>2020 </em></p>
-      <button aria-label="Nominate movie" disabled="" class="nominate-button movie-btn disabled">
-        Nominated <i class="far fa-check-circle"></i>
+      <button class="nominate-button movie-btn w-100">
+        View <i class="far fa-check-circle"></i>
       </button>
     </div>
   </article>
@@ -25,17 +25,19 @@ export default {};
   display: flex;
   flex-direction: column;
   color: #fff;
-  width: 46%;
+  /* width: 46%; */
   margin-bottom: 2.5rem;
   justify-content: space-between;
 }
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .movie-card {
-    width: 31%;
+    width: 25%;
   }
-}
+} */
 .movie-card__image {
-  width: 100%;
+  height: auto;
+  width: 250px;
+  object-fit: cover;
 }
 
 .movie-card .disabled {
@@ -48,7 +50,7 @@ export default {};
 .movie-card .nominate-button {
   width: 100%;
   margin: 1rem 0 0;
-  background: #ce8437;
+  background: #18540f;
   color: #fff;
   text-transform: uppercase;
   border: none;
@@ -63,5 +65,8 @@ export default {};
   position: relative;
   transition: background 0.2s linear;
   cursor: pointer;
+}
+.movie-card__details {
+  width: 250px;
 }
 </style>

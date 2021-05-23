@@ -2,8 +2,8 @@
   <IonContent class="">
     <div class="flex bg-black">
       <main class="flex-col">
-        <h3>Popular</h3>
-        <div class="flex flex-wrap justify-between">
+        <h3 class="green text-3xl ">Popular</h3>
+        <div class="flex flex-wrap justify-center">
           <animeCard v-for="n in 10" :key="n" />
         </div>
       </main>

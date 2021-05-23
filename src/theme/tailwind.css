@@ -13698,10 +13698,8 @@ video {
   color: #276749;
   color: rgba(39, 103, 73, var(--text-opacity));
 }
-.text-green-900 {
-  --text-opacity: 1;
-  color: #22543d;
-  color: rgba(34, 84, 61, var(--text-opacity));
+.green {
+  color: #18540f;
 }
 .text-teal-100 {
   --text-opacity: 1;
