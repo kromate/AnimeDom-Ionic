@@ -1,13 +1,20 @@
 <template>
   <transition name="slide" appear>
     <div class="bg" v-if="modal" @click="close($event)">
-      <div v-if="!options.length">
-        <Loader />
-      </div>
-      <div class="card" v-else>
-        <a v-for="(ep, index) in options" :key="index" :href="ep.link" target="_blank">
+      <div class="card" v-if="options.length">
+        <a
+          v-for="(ep, index) in options"
+          :key="index"
+          :href="ep.link"
+          target="_blank"
+          class="text-sm"
+        >
           {{ ep.name }}
         </a>
+      </div>
+
+      <div v-else>
+        <Loader />
       </div>
     </div>
   </transition>
@@ -24,6 +31,7 @@ export default {
       options: [],
     };
   },
+
   computed: {
     modal() {
       return this.showModal;
@@ -58,6 +66,13 @@ export default {
       }
     },
   },
+
+  mounted() {
+    this.options = [];
+  },
+  created() {
+    this.options = [];
+  },
 };
 </script>
 
@@ -65,7 +80,7 @@ export default {
 a {
   background: black;
   margin: 3px;
-  color: goldenrod;
+  color: #359c26;
   padding: 4px;
 }
 .bg {
@@ -89,7 +104,7 @@ a {
   overflow: hidden;
   padding: 1rem;
   background: white;
-  /* min-width: 600px; */
+  width: 600px;
   max-width: 85vw;
   display: flex;
   justify-content: center;

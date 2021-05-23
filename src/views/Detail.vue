@@ -1,19 +1,25 @@
-d<template>
-  ate
+<template>
   <IonContent>
     <div class="container mx-auto" v-if="data.name">
       <DescriptionModal :showModal="showModal" :link="link" @close="showModal = false" />
-      <div class="details">
+      <div class="details mx-2">
         <h2>{{ data.name }}</h2>
-        <p>
-          <span class="title">
+        <p class="px-4">
+          <span class="title ">
             summary
           </span>
           <br />
           {{ data.summary }}
         </p>
 
-        <p>
+        <p v-if="data.status">
+          <span class="title">
+            Status
+          </span>
+          <br />
+          {{ data.status }}
+        </p>
+        <p v-if="data.otherNames">
           <span class="title">
             Other Names
           </span>
@@ -21,7 +27,7 @@ d<template>
           {{ data.otherNames }}
         </p>
 
-        <p>
+        <p v-if="data.release">
           <span class="title">
             Release
           </span>
@@ -29,7 +35,7 @@ d<template>
           {{ data.release }}
         </p>
 
-        <p>
+        <p v-if="data.type">
           <span class="title">
             Type
           </span>
@@ -37,7 +43,7 @@ d<template>
           {{ data.type }}
         </p>
 
-        <p>
+        <p v-if="data.genre">
           <span class="title">
             Genre
           </span>
@@ -50,7 +56,7 @@ d<template>
             Episodes
           </span>
           <br />
-          <div class="blc">
+          <div class="flex flex-wrap justify-center">
             <div
               class="epi"
               v-for="(ep, index) in data.episodes"
@@ -174,10 +180,6 @@ export default {
 </script>
 
 <style scoped>
-.blc {
-  display: block;
-  min-height: 100px;
-}
 .ept {
   margin-bottom: 1rem;
 }
@@ -200,7 +202,7 @@ export default {
 
   cursor: pointer;
   display: inline;
-  color: #d79943;
+  color: #359c26;
   background: black;
   margin: 9px 5px;
   padding: 3px 6px;
@@ -211,7 +213,7 @@ export default {
   height: fit-content;
   cursor: pointer;
   display: inline;
-  background: #d79943;
+  background: #359c26;
   color: black;
   margin: 9px 5px;
   padding: 3px 6px;
