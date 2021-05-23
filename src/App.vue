@@ -1,6 +1,6 @@
 <template>
   <ion-app>
-    <ion-header :translucent="true" v-if="show">
+    <ion-header :translucent="true" v-if="true">
       <ion-toolbar>
         <ion-title>{{ $route.name }}</ion-title>
 
