@@ -5,8 +5,8 @@
       <div class="header_content">
         <img src="@/assets/general/Female.png" alt="" />
         <ion-label>
-          <h2>Kromate</h2>
-          <p>University of Lagos</p>
+          <h2 class="font-bold tracking-wider">AnimeDom</h2>
+          <p>all things anime</p>
         </ion-label>
       </div>
 
