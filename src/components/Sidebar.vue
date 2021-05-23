@@ -24,11 +24,11 @@
             <ion-item> <ion-icon :icon="home"></ion-icon> Home </ion-item>
           </router-link>
 
-          <router-link to="/pastquestions">
+          <router-link to="/search">
             <ion-item> <ion-icon :icon="search"></ion-icon>Search</ion-item>
           </router-link>
 
-          <router-link to="/courses">
+          <router-link to="/genres">
             <ion-item> <ion-icon :icon="listCircle"></ion-icon>Genre</ion-item>
           </router-link>
 
@@ -79,7 +79,7 @@ import {
   IonList,
   menuController,
 } from "@ionic/vue";
-import { add, home, search } from "ionicons/icons";
+import { add, home, search, listCircle } from "ionicons/icons";
 export default {
   name: "Menu",
   components: {
