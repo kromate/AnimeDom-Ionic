@@ -9,8 +9,8 @@
         <em>{{ data.release }} </em>
       </p>
 
-      <button class="nominate-button movie-btn w-100" :href="data.link">
-        {{ "View" }}
+      <button class="nominate-button movie-btn w-100" @click="direct(data.link, data.image)">
+        View
       </button>
     </div>
   </article>
@@ -18,11 +18,20 @@
 
 <script>
 export default {
-  name: "animeCard",
+  name: "searchCard",
   props: {
     data: {
       type: Array,
       required: true,
+    },
+  },
+
+  methods: {
+    direct(link, image) {
+      this.$router.push({
+        name: "Details",
+        query: { link: link, image: image },
+      });
     },
   },
 };

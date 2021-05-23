@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import DescriptionModal from "@/components/descriptionModal.vue";
+import DescriptionModal from "@/components/DownloadModal.vue";
 import Loader from "@/components/Loader.vue";
 export default {
   components: { DescriptionModal, Loader },
