@@ -1,7 +1,7 @@
 <template>
   <IonContent class="mx-auto">
     <div class="flex bg-black mx-auto w-100 ">
-      <main class="flex-col mx-auto container">
+      <main class="flex-col mx-auto container" v-if="recentAnimeList.length">
         <div>
           <h1 class="green text-4xl font-bold mb-3">Recent</h1>
           <div class="flex flex-wrap justify-start ac">
@@ -15,6 +15,10 @@
           </div>
         </div>
       </main>
+
+      <div v-else class="mx-auto mt-5">
+        <Loader />
+      </div>
     </div>
   </IonContent>
 </template>
@@ -22,8 +26,9 @@
 <script>
 import { IonContent } from "@ionic/vue";
 import animeCard from "@/components/animeCard.vue";
+import Loader from "@/components/Loader.vue";
 export default {
-  components: { animeCard, IonContent },
+  components: { animeCard, IonContent, Loader },
   data() {
     return {
       listening: false,

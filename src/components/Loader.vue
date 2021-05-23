@@ -1,9 +1,9 @@
 <template>
-  <transition name="slide" appear>
-    <div class="body">
-      <img src="@/assets/general/Logo.svg" class="res-img grow" alt="" />
-    </div>
-  </transition>
+  <div class="lds-facebook">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </template>
 
 <script>
@@ -11,41 +11,41 @@ export default {};
 </script>
 
 <style scoped>
-.body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  z-index: 10000;
-  position: fixed;
-  overflow-x: hidden;
-  top: 0;
-  left: 0;
-  background-color: rgb(220, 220, 220);
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
 }
-.grow {
-  animation: grow 3s forwards infinite;
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #fff;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
-@keyframes grow {
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
   0% {
-    transform: scale(1);
+    top: 8px;
+    height: 64px;
   }
-  50% {
-    transform: scale(1.2);
-  }
+  50%,
   100% {
-    transform: scale(1);
+    top: 24px;
+    height: 32px;
   }
-}
-.slide-enter-active,
-.slide-leave-active {
-  transition: 1s;
-}
-
-.slide-enter,
-.slide-leave-to {
-  transform: scale(1);
 }
 </style>
