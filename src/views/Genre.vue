@@ -1,19 +1,19 @@
 <template>
   <IonContent class="mx-auto">
     <div class="flex bg-black mx-auto w-100 ">
-      <main class="flex-col mx-auto container" v-if="recentAnimeList.length">
+      <main class="flex-col mx-auto container" v-if="genreAnimeList.length">
         <div>
           <h1 class="green text-4xl font-bold mb-3">Genres</h1>
           <div class="flex flex-wrap justify-start ac">
-            <animeCard v-for="n in recentAnimeList" :data="n" :key="n" type="recent" />
+            <genreCard v-for="n in genreAnimeList" :cardsIcon="n" :key="n" type="recent" />
           </div>
         </div>
-        <div>
+        <!-- <div>
           <h1 class="green text-4xl font-bold mb-3">Popular</h1>
           <div class="flex flex-wrap justify-start ac">
-            <animeCard v-for="n in popularAnimeList" :data="n" :key="n" type="popular" />
+            <genreCard v-for="n in popularAnimeList" :data="n" :key="n" type="popular" />
           </div>
-        </div>
+        </div> -->
       </main>
 
       <div v-else class="mx-auto mt-5">
@@ -25,37 +25,24 @@
 
 <script>
 import { IonContent } from "@ionic/vue";
-import animeCard from "@/components/animeCard.vue";
+import genreCard from "@/components/genreCard.vue";
 import Loader from "@/components/Loader.vue";
 export default {
-  components: { animeCard, IonContent, Loader },
+  components: { genreCard, IonContent, Loader },
   data() {
     return {
       listening: false,
-      recentAnimeList: [],
+      genreAnimeList: [],
       popularAnimeList: [],
     };
   },
   methods: {
     init() {
-      fetch(`https://anime-web-scraper.herokuapp.com/recent/?page=1`)
+      fetch(`https://anime-web-scraper.herokuapp.com/genres/`)
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          this.recentAnimeList = data;
-          //   this.$store.commit("addsearchedRes", data);
-          //   this.loading = false;
-        })
-        .catch((err) => {
-          console.log(err);
-          alert("something went wrong");
-          this.loading = false;
-        });
-      fetch(`https://anime-web-scraper.herokuapp.com/popular/?page=1`)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          this.popularAnimeList = data;
+          this.genreAnimeList = data;
           //   this.$store.commit("addsearchedRes", data);
           //   this.loading = false;
         })
