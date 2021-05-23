@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-// import store from '@/store';
+import store from '@/store';
 
 const routes = [
   {
@@ -37,10 +37,10 @@ const router = createRouter({
   routes
 });
 
-// router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, from, next) => {
 
-//     store.commit("changeMenu")
-
-// });
+    store.commit("changeMenu")
+next()
+});
 
 export default router

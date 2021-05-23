@@ -29,7 +29,7 @@ export default {
   methods: {
     direct(link, image) {
       this.$router.push({
-        name: "Details",
+        name: "Detail",
         query: { link: link, image: image },
       });
     },
