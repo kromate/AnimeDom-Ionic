@@ -22,10 +22,6 @@
 <script>
 export default {
   props: ["selected"],
-  created() {
-    console.log(this.selected);
-    console.log(typeof this.selected);
-  },
 };
 </script>
 

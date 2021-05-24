@@ -47,12 +47,9 @@ export default {
     getDetails() {
       this.loading = true;
       this.options = [];
-      console.log(`https://anime-web-scraper.herokuapp.com/downloadLink/?link=${this.link}`);
       fetch(`https://anime-web-scraper.herokuapp.com/downloadLink/?link=${this.link}`)
         .then((response) => response.json())
         .then((data) => {
-          console.log("data");
-          console.log(data);
           this.options = data;
           this.loading = false;
           // this.Eload = false;

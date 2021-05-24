@@ -58,12 +58,9 @@ export default {
       fetch(`https://anime-web-scraper.herokuapp.com/search/?name=${value}`)
         .then((response) => response.json())
         .then((data) => {
-          // console.log(data);
           this.title = `showing ${data.length} animes for ${this.searchValue}`;
           this.loading = false;
           this.searchAnimeList = data;
-          //   this.$store.commit("addsearchedRes", data);
-          //   this.loading = false;
         })
         .catch((err) => {
           console.log(err);

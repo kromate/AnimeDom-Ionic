@@ -26,15 +26,14 @@ export default {
     inactiveStyle: String,
     horizontal: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   methods: {
     css__tab(selectedTab, tabIndex) {
       let tab;
       if (this.horizontal) {
         this.tabs.length - 1 == tabIndex ? (tab = "") : (tab = "tw-mr-10");
-        // console.log("****", selectedTab, this.tabs.length);
 
         if (this.currentTab === selectedTab) {
           tab += " tw-text-primary active--horizontal";
@@ -44,9 +43,7 @@ export default {
       } else {
         tab = "";
 
-        this.tabs.length - 1 == tabIndex
-          ? (tab = "tw-pl-3")
-          : (tab = "tw-pl-3 tw-mb-2");
+        this.tabs.length - 1 == tabIndex ? (tab = "tw-pl-3") : (tab = "tw-pl-3 tw-mb-2");
 
         if (this.currentTab === selectedTab) {
           tab += " tw-text-primary active";
@@ -55,8 +52,8 @@ export default {
         }
       }
       return tab;
-    }
-  }
+    },
+  },
 };
 </script>
 

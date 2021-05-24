@@ -124,23 +124,18 @@ export default {
       let uplink = encodeURIComponent(link.trim());
       this.link = uplink;
       this.showModal = true;
-      console.log("object");
     },
     getEpis(id, start, end, name) {
       this.Episodes = [];
       this.show = true;
 
       // https://anime-web-scraper.herokuapp.com/episodes/?start=0&end=99&id=1089&name=naruto
-      console.log(
-        `https://anime-web-scraper.herokuapp.com/episodes/?start=${start}&end=${end}&id=${id}&name=${name}`
-      );
+
       fetch(
         `https://anime-web-scraper.herokuapp.com/episodes/?start=${start}&end=${end}&id=${id}&name=${name}`
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log("data");
-          console.log(data);
           this.Episodes = data;
           // this.Eload = false;
         })
@@ -152,12 +147,9 @@ export default {
     },
     getDetails() {
       this.data = {};
-      console.log(`https://anime-web-scraper.herokuapp.com/desc/?link=${this.$route.query.link}`);
       fetch(`https://anime-web-scraper.herokuapp.com/desc/?link=${this.$route.query.link}`)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          console.log(data.vidOne);
           this.data = data;
           this.loading = false;
         })
@@ -169,7 +161,6 @@ export default {
     },
   },
   created() {
-    console.log(this.desc);
     if (this.desc == null && this.$route.query.link == undefined) {
       this.$router.push("/");
     } else {

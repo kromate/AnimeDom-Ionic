@@ -51,7 +51,6 @@ export default {
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           this.genresAnimeList = data;
           this.loading = false;
         })
@@ -67,7 +66,6 @@ export default {
       fetch(`https://anime-web-scraper.herokuapp.com/genres/`)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           this.genreAnimeList = data;
           //   this.$store.commit("addsearchedRes", data);
           //   this.loading = false;
