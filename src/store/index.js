@@ -4,14 +4,21 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     menu:false,
-    searchArray: [],
     desc: null,
     homeCategoryView:"",
     homeCategoryViewLink:"",
     recentAnimeList:[],
     popularAnimeList:[],
+    searchAnimeList:[],
+    searchTitle:""
   },
   mutations: {
+    changeSearchTitle(state, data){
+      state.searchTitle = data
+    },
+    addSearchAnimeList(state, data){
+      state.searchAnimeList = data
+    },
     addPopularAnimeList(state, data){
       state.popularAnimeList = data
     },

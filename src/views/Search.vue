@@ -43,14 +43,20 @@ export default {
   data() {
     return {
       loading: false,
-      title: "",
       searchValue: "",
-      searchAnimeList: [],
     };
+  },
+  computed: {
+    searchAnimeList() {
+      return this.$store.state.searchAnimeList;
+    },
+    title() {
+      return this.$store.state.searchTitle;
+    },
   },
   methods: {
     search() {
-      this.title = "searching...";
+      this.$store.commit("changeSearchTitle", "searching...");
       this.loading = true;
       this.searchAnimeList = [];
       let value = encodeURIComponent(this.searchValue);
@@ -58,14 +64,17 @@ export default {
       fetch(`https://anime-web-scraper.herokuapp.com/search/?name=${value}`)
         .then((response) => response.json())
         .then((data) => {
-          this.title = `showing ${data.length} animes for ${this.searchValue}`;
+          this.$store.commit(
+            "changeSearchTitle",
+            `showing ${data.length} animes for ${this.searchValue}`
+          );
           this.loading = false;
-          this.searchAnimeList = data;
+          this.$store.commit("addSearchAnimeList", data);
         })
         .catch((err) => {
           console.log(err);
           alert("something went wrong");
-          this.title = `Oops, Something went Wrong. Try again later`;
+          this.$store.commit("changeSearchTitle", `Oops, Something went Wrong. Try again later`);
           this.loading = false;
         });
     },
