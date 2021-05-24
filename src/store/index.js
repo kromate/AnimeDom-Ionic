@@ -9,8 +9,12 @@ export default createStore({
     homeCategoryView:"",
     homeCategoryViewLink:"",
     recentAnimeList:[],
+    popularAnimeList:[],
   },
   mutations: {
+    addPopularAnimeList(state, data){
+      state.popularAnimeList = data
+    },
     addRecentAnimeList(state, data){
       state.recentAnimeList = data
     },
