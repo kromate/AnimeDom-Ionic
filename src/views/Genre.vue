@@ -34,7 +34,6 @@ export default {
   data() {
     return {
       loading: false,
-      genresAnimeList: [],
     };
   },
   computed: {
@@ -43,6 +42,9 @@ export default {
     },
     genreAnimeList() {
       return this.$store.state.genreAnimeList;
+    },
+    genresAnimeList() {
+      return this.$store.state.genresAnimeList;
     },
   },
   watch: {
@@ -53,7 +55,7 @@ export default {
       )
         .then((response) => response.json())
         .then((data) => {
-          this.genresAnimeList = data;
+          this.$store.commit("addGenresAnimeList", data);
           this.loading = false;
         })
         .catch((err) => {
