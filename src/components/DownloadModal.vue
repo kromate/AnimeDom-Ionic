@@ -1,7 +1,7 @@
 <template>
   <transition name="slide" appear>
     <div class="bg" v-if="modal" @click="close($event)">
-      <div class="card" v-if="options.length">
+      <div class="card" v-if="options.length && !loading">
         <a
           v-for="(ep, index) in options"
           :key="index"
@@ -28,6 +28,7 @@ export default {
   props: ["showModal", "link"],
   data() {
     return {
+      loading: false,
       options: [],
     };
   },
@@ -44,6 +45,7 @@ export default {
   },
   methods: {
     getDetails() {
+      this.loading = true;
       this.options = [];
       console.log(`https://anime-web-scraper.herokuapp.com/downloadLink/?link=${this.link}`);
       fetch(`https://anime-web-scraper.herokuapp.com/downloadLink/?link=${this.link}`)
@@ -52,10 +54,12 @@ export default {
           console.log("data");
           console.log(data);
           this.options = data;
+          this.loading = false;
           // this.Eload = false;
         })
         .catch((err) => {
           console.log(err);
+          this.loading = false;
           // this.Eload = false;
           this.Error = true;
         });
@@ -64,15 +68,18 @@ export default {
       if (e.target.className == "bg") {
         this.$emit("close");
         this.options = [];
+        this.loading = true;
       }
     },
   },
 
   mounted() {
     this.options = [];
+    this.loading = true;
   },
   created() {
     this.options = [];
+    this.loading = true;
   },
 };
 </script>
