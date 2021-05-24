@@ -8,8 +8,12 @@ export default createStore({
     desc: null,
     homeCategoryView:"",
     homeCategoryViewLink:"",
+    recentAnimeList:[],
   },
   mutations: {
+    addRecentAnimeList(state, data){
+      state.recentAnimeList = data
+    },
     changeMenu(state){
       function isMobileDevice() {
         let check = false;

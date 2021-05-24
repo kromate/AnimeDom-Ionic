@@ -32,25 +32,28 @@ export default {
   data() {
     return {
       listening: false,
-      recentAnimeList: [],
       popularAnimeList: [],
     };
   },
+  computed: {
+    recentAnimeList() {
+      return this.$store.state.recentAnimeList;
+    },
+  },
   methods: {
     init() {
-      fetch(`https://anime-web-scraper.herokuapp.com/recent/?page=1`)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          this.recentAnimeList = data;
-          //   this.$store.commit("addsearchedRes", data);
-          //   this.loading = false;
-        })
-        .catch((err) => {
-          console.log(err);
-          alert("something went wrong");
-          this.loading = false;
-        });
+      if (!this.recentAnimeList.length) {
+        fetch(`https://anime-web-scraper.herokuapp.com/recent/?page=1`)
+          .then((response) => response.json())
+          .then((data) => {
+            this.$store.commit("addRecentAnimeList", data);
+          })
+          .catch((err) => {
+            console.log(err);
+            alert("something went wrong");
+            this.loading = false;
+          });
+      }
       fetch(`https://anime-web-scraper.herokuapp.com/popular/?page=1`)
         .then((response) => response.json())
         .then((data) => {
