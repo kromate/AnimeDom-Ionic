@@ -34,13 +34,15 @@ export default {
   data() {
     return {
       loading: false,
-      genreAnimeList: [],
       genresAnimeList: [],
     };
   },
   computed: {
     selected() {
       return this.$store.state.homeCategoryView;
+    },
+    genreAnimeList() {
+      return this.$store.state.genreAnimeList;
     },
   },
   watch: {
@@ -61,13 +63,13 @@ export default {
         });
     },
   },
+
   methods: {
     init() {
       fetch(`https://anime-web-scraper.herokuapp.com/genres/`)
         .then((response) => response.json())
         .then((data) => {
-          this.genreAnimeList = data;
-          //   this.$store.commit("addsearchedRes", data);
+          this.$store.commit("addGenreAnimeList", data);
           //   this.loading = false;
         })
         .catch((err) => {
@@ -78,7 +80,9 @@ export default {
     },
   },
   created() {
-    this.init();
+    if (!this.genreAnimeList.length) {
+      this.init();
+    }
   },
 };
 </script>

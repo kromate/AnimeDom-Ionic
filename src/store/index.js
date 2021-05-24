@@ -10,9 +10,13 @@ export default createStore({
     recentAnimeList:[],
     popularAnimeList:[],
     searchAnimeList:[],
+    genreAnimeList:[],
     searchTitle:""
   },
   mutations: {
+    addGenreAnimeList(state, data){
+      state.genreAnimeList = data
+    },
     changeSearchTitle(state, data){
       state.searchTitle = data
     },
