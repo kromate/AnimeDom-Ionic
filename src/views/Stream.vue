@@ -42,19 +42,24 @@
 </template>
 
 <script>
-export default {};
+import { IonContent } from "@ionic/vue";
+export default {
+  name: "stream",
+  components: { IonContent },
+};
 </script>
 
 <style scoped>
 .videoContainer {
   position: relative;
   width: 720px;
+  max-width: 98vw;
   font-family: Arial;
   background-color: black;
 }
 .videoContainer video {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   display: block;
 }
 
