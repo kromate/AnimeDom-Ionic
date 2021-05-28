@@ -30,6 +30,12 @@ const routes = [
     component: () => import("@/views/Genre.vue"),
 
   },
+  {
+    path: "/stream",
+    name: "Stream",
+    component: () => import("@/views/Stream.vue"),
+
+  },
 ]
 
 const router = createRouter({
