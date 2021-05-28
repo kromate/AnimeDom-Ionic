@@ -28,7 +28,7 @@
           <span class="ttime">0:00</span>
         </div>
         <div class="volume">
-          <a class="toggle-sound video-volume-high"></a>
+          <a class="toggle-sound video-volume-high"> <ion-icon :icon="home"></ion-icon></a>
           <div class="volume-piller">
             <div class="volume-slider"></div>
           </div>
@@ -42,6 +42,17 @@
 </template>
 
 <script>
+import {
+  IonIcon,
+  IonLabel,
+  IonContent,
+  IonButton,
+  IonMenu,
+  IonItem,
+  IonList,
+  menuController,
+} from "@ionic/vue";
+import { add, home, search, listCircle } from "ionicons/icons";
 import { IonContent } from "@ionic/vue";
 export default {
   name: "stream",
