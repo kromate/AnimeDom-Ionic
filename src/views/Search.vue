@@ -5,7 +5,7 @@
         <div>
           <h1 class="green text-4xl font-bold mb-3">Search</h1>
           <div class="container__item">
-            <form class="form">
+            <form class="form" @submit.prevent="search()" @keyup.enter="search()">
               <input
                 type="text"
                 class="form__field"
