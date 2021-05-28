@@ -7,7 +7,7 @@
         x-webkit-airplay="allow"
         allowfullscreen="allow"
         preload="metadata"
-        poster="http://camendesign.com/code/video_for_everybody/poster.jpg"
+        poster="@/assets/general/Poster.png"
       >
         <source
           src="https://gogo-cdn.com/download.php?url=aHR0cHM6LyAawehyfcghysfdsDGDYdgdsfsdfwstdgdsgtert9URASDGHUSRFSJGYfdsffsderFStewthsfSFtrftesdfjZG4xMnguY2xvdWQ5eHguY29tL3VzZXIxMzQyL2Y5NTFkZjI1ZWNmMzE4NDAwZjAyNjFhYjAwNTRlMjY4L0VQLjguMzYwcC5tcDQ/dG9rZW49b21VdXpNaGg3SGZYdjdkcVJJdTVWUSZleHBpcmVzPTE2MjIyMDkyNjYmaWQ9MTYyMDkx"
@@ -17,7 +17,7 @@
       </video>
 
       <div class="control">
-        <a class="play video-play"></a>
+        <a class="play video-play"><ion-icon :icon="play"></ion-icon></a>
 
         <div class="progress">
           <div class="progress-bar"></div>
@@ -28,7 +28,7 @@
           <span class="ttime">0:00</span>
         </div>
         <div class="volume">
-          <a class="toggle-sound video-volume-high"> <ion-icon :icon="home"></ion-icon></a>
+          <a class="toggle-sound video-volume-high"> </a>
           <div class="volume-piller">
             <div class="volume-slider"></div>
           </div>
@@ -43,9 +43,8 @@
 
 <script>
 import { IonIcon } from "@ionic/vue";
-import { home } from "ionicons/icons";
+import { home, play } from "ionicons/icons";
 import { IonContent } from "@ionic/vue";
-import $ from "jquery";
 import "../helper/video.js";
 export default {
   name: "stream",
@@ -53,7 +52,7 @@ export default {
   data() {
     return {
       home,
-      $,
+      play,
     };
   },
 };
