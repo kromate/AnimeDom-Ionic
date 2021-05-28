@@ -18,7 +18,7 @@
 
       <div class="control">
         <a class="play video-play" @click="playing = !playing"
-          ><ion-icon :icon="playing ? play : pause"></ion-icon
+          ><ion-icon :icon="playing ? pause : play"></ion-icon
         ></a>
 
         <div class="progress">
@@ -37,7 +37,7 @@
         </div>
         <a id="picture-in-picture" class="video-picture-in-picture-enter"></a>
         <a id="airplay" class="video-airplay"></a>
-        <a class="fullscreen video-fullscreen-enter"></a>
+        <a class="fullscreen video-fullscreen-enter"><ion-icon :icon="expand"></ion-icon></a>
       </div>
     </div>
   </IonContent>
@@ -45,7 +45,7 @@
 
 <script>
 import { IonIcon } from "@ionic/vue";
-import { home, play, pause } from "ionicons/icons";
+import { expand, play, pause } from "ionicons/icons";
 import { IonContent } from "@ionic/vue";
 import "../helper/video.js";
 export default {
@@ -54,7 +54,7 @@ export default {
   data() {
     return {
       playing: false,
-      home,
+      expand,
       play,
       pause,
     };
