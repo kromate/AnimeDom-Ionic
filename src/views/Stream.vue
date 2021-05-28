@@ -17,7 +17,9 @@
       </video>
 
       <div class="control">
-        <a class="play video-play"><ion-icon :icon="play"></ion-icon></a>
+        <a class="play video-play" @click="playing = !playing"
+          ><ion-icon :icon="playing ? play : pause"></ion-icon
+        ></a>
 
         <div class="progress">
           <div class="progress-bar"></div>
@@ -43,7 +45,7 @@
 
 <script>
 import { IonIcon } from "@ionic/vue";
-import { home, play } from "ionicons/icons";
+import { home, play, pause } from "ionicons/icons";
 import { IonContent } from "@ionic/vue";
 import "../helper/video.js";
 export default {
@@ -51,8 +53,10 @@ export default {
   components: { IonContent, IonIcon },
   data() {
     return {
+      playing: false,
       home,
       play,
+      pause,
     };
   },
 };
