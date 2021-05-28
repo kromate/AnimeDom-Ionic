@@ -170,6 +170,7 @@ export default {
   },
 
   created() {
+    this.changeMode();
     this.handleConnectionChange();
     this.listenForInstall();
     this.checkPWA();
