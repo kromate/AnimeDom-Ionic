@@ -42,21 +42,30 @@
 </template>
 
 <script>
-import {
-  IonIcon,
-  IonLabel,
-  IonContent,
-  IonButton,
-  IonMenu,
-  IonItem,
-  IonList,
-  menuController,
-} from "@ionic/vue";
-import { add, home, search, listCircle } from "ionicons/icons";
+import { IonIcon } from "@ionic/vue";
+import { home } from "ionicons/icons";
 import { IonContent } from "@ionic/vue";
 export default {
   name: "stream",
-  components: { IonContent },
+  components: { IonContent, IonIcon },
+  data() {
+    return {
+      home,
+    };
+  },
+  mounted() {
+    let myScript = document.createElement("script");
+    myScript.setAttribute(
+      "src",
+      "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    );
+    myScript.setAttribute(
+      "src",
+      "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
+    );
+    // myScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js");
+    document.body.appendChild(myScript);
+  },
 };
 </script>
 
