@@ -45,26 +45,16 @@
 import { IonIcon } from "@ionic/vue";
 import { home } from "ionicons/icons";
 import { IonContent } from "@ionic/vue";
+import $ from "jquery";
+import "../helper/video.js";
 export default {
   name: "stream",
   components: { IonContent, IonIcon },
   data() {
     return {
       home,
+      $,
     };
-  },
-  mounted() {
-    let myScript = document.createElement("script");
-    myScript.setAttribute(
-      "src",
-      "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-    );
-    myScript.setAttribute(
-      "src",
-      "https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
-    );
-    // myScript.setAttribute("src", "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js");
-    document.body.appendChild(myScript);
   },
 };
 </script>

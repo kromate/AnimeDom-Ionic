@@ -1,3 +1,6 @@
+import $ from "jquery";
+import './jquery-ui.min.js'
+
 $(function(){
 
   // Return a DOM object
@@ -68,7 +71,7 @@ $(function(){
       hideControls();
       $('.videoContainer').css('cursor', 'none');
     }, ms)
-  };
+  }
 
 
   /*
@@ -138,7 +141,7 @@ $(function(){
 
 
   function formatTime(seconds) {
-    minutes = Math.floor(seconds / 60);
+   let minutes = Math.floor(seconds / 60);
     minutes = (minutes >= 10) ? minutes : "0" + minutes;
     seconds = Math.floor(seconds % 60);
     seconds = (seconds >= 10) ? seconds : "0" + seconds;
@@ -151,7 +154,7 @@ $(function(){
   objectVideo.bind("timeupdate", videoTimeUpdateHandler);
     scrubber.bind("mousedown", scrubberMouseDownHandler);
 
-  function videoTimeUpdateHandler(e) {
+  function videoTimeUpdateHandler() {
           var percent = video.currentTime / video.duration;
           updateProgressWidth(percent);
       }
@@ -250,7 +253,7 @@ $(function(){
 
   if (video.webkitSupportsPresentationMode && typeof video.webkitSetPresentationMode === "function") {
     // Toggle PiP when the user clicks the button.
-    PiP.addEventListener("click", function(event) {
+    PiP.addEventListener("click", function() {
       $("#picture-in-picture").toggleClass("video-picture-in-picture-enter video-picture-in-picture-exit");
       video.webkitSetPresentationMode(video.webkitPresentationMode === "picture-in-picture" ? "inline" : "picture-in-picture");
     });
