@@ -11,8 +11,8 @@
       </div>
 
       <div class="action_button">
-        <ion-button :class="[connected ? 'online' : 'offline']">
-          {{ connected ? "Online" : "Offline" }}
+        <ion-button :class="[mode == 'Download' ? 'download' : 'stream']" @click="switchMode()">
+          {{ mode }}
         </ion-button>
       </div>
       <div class="von">
@@ -99,6 +99,7 @@ export default {
       search,
       listCircle,
       connected: navigator.onLine,
+      mode: localStorage.getItem("mode"),
     };
   },
 
@@ -114,6 +115,26 @@ export default {
   },
 
   methods: {
+    switchMode() {
+      if (localStorage.getItem("mode") == "Download") {
+        localStorage.setItem("mode", "Stream");
+      } else if (localStorage.getItem("mode") == "Stream") {
+        localStorage.setItem("mode", "Download");
+      } else {
+        localStorage.setItem("mode", "Stream");
+      }
+      this.changeMode();
+      console.log(localStorage.getItem("mode"));
+    },
+    changeMode() {
+      if (localStorage.getItem("mode") == null) {
+        this.mode = "Download";
+      } else {
+        localStorage.getItem("mode") == "Download"
+          ? (this.mode = "Download")
+          : (this.mode = "Stream");
+      }
+    },
     checkPWA() {
       window.addEventListener("appinstalled", () => {
         console.log("INSTALL: Success");
@@ -157,12 +178,12 @@ export default {
 </script>
 
 <style scoped>
-.download {
+/* .download {
   --background: #18540f;
   color: white;
-  /* box-shadow: 1px 1px 0 #1d8758, 0 0 20px 5px #c0ffe4, inset 2px 2px 0 #d3ffec; */
+  box-shadow: 1px 1px 0 #1d8758, 0 0 20px 5px #c0ffe4, inset 2px 2px 0 #d3ffec;
   animation: glow 1s infinite forwards;
-}
+} */
 
 /* animates box shadow glow effect */
 @keyframes glow {
@@ -195,9 +216,9 @@ export default {
     opacity: 0;
   }
 }
-.download ion-icon {
+/* .download ion-icon {
   color: white !important;
-}
+} */
 .action_button {
   display: flex;
   justify-content: center;
@@ -223,12 +244,23 @@ ion-button {
 
   --border-radius: 3px;
 }
-
-.online {
-  --background: #18540f;
+.button-native {
+  background: inherit;
 }
-.offline {
-  --background: #97969e;
+
+.download {
+  --background: #18540f;
+  color: #e1e1e1;
+  font-size: 17px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+.stream {
+  --background: #e1e1e1;
+  color: #18540f;
+  font-size: 17px;
+  letter-spacing: 1px;
+  font-weight: 700;
 }
 ion-icon {
   margin-right: 1px;
