@@ -1,6 +1,6 @@
 import $ from "jquery";
-import './jquery-ui.min.js'
-
+import 'jquery'
+import 'jquery-ui'
 $(function(){
 
   // Return a DOM object
