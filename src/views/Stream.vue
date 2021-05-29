@@ -25,9 +25,13 @@
           <ion-icon :icon="playing ? pause : play"></ion-icon>
         </button>
         <input type="range" id="seek-bar" value="0" />
-        <button type="button" id="mute">Mute</button>
+        <button type="button" id="mute" @click="mute_btn()">
+          <ion-icon :icon="muted ? volumeHigh : volumeMute"></ion-icon>
+        </button>
         <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1" />
-        <button type="button" id="full-screen">Full-Screen</button>
+        <button type="button" id="full-screen" @click="full_screen()">
+          <ion-icon :icon="muted ? volumeHigh : volumeMute"></ion-icon>
+        </button>
       </div>
     </div>
   </IonContent>
@@ -35,7 +39,7 @@
 
 <script>
 import { IonIcon } from "@ionic/vue";
-import { expand, play, pause } from "ionicons/icons";
+import { expand, play, pause, volumeMute, volumeHigh } from "ionicons/icons";
 import { IonContent } from "@ionic/vue";
 // import "../helper/video.js";
 export default {
@@ -44,10 +48,12 @@ export default {
   data() {
     return {
       playing: false,
-      muted: false,
+      muted: true,
       expand,
       play,
       pause,
+      volumeMute,
+      volumeHigh,
 
       video: "",
       playButton: "",
@@ -63,6 +69,25 @@ export default {
       } else {
         this.video.pause();
         this.playing = false;
+      }
+    },
+    mute_btn() {
+      if (this.video.muted == false) {
+        this.muted = true;
+        this.video.muted = true;
+      } else {
+        // Unmute the video
+        this.muted = false;
+        this.video.muted = false;
+      }
+    },
+    full_screen() {
+      if (this.video.requestFullscreen) {
+        this.video.requestFullscreen();
+      } else if (this.video.mozRequestFullScreen) {
+        this.video.mozRequestFullScreen(); // Firefox
+      } else if (this.video.webkitRequestFullscreen) {
+        this.video.webkitRequestFullscreen(); // Chrome and Safari
       }
     },
   },
