@@ -1,6 +1,6 @@
 <template>
-  <IonContent class="mx-auto">
-    <div id="video-container">
+  <IonContent>
+    <div id="video-container mx-auto">
       <!-- Video -->
       <video
         id="video"
@@ -24,13 +24,21 @@
         <button type="button" id="play-pause" class="play" @click="play_pause_btn()">
           <ion-icon :icon="playing ? pause : play"></ion-icon>
         </button>
-        <input type="range" id="seek-bar" value="0" />
+        <input type="range" id="seek-bar" value="0" @change="seek()" />
         <button type="button" id="mute" @click="mute_btn()">
           <ion-icon :icon="muted ? volumeHigh : volumeMute"></ion-icon>
         </button>
-        <input type="range" id="volume-bar" min="0" max="1" step="0.1" value="1" />
+        <input
+          type="range"
+          id="volume-bar"
+          min="0"
+          max="1"
+          step="0.1"
+          value="1"
+          @change="videoVolume()"
+        />
         <button type="button" id="full-screen" @click="full_screen()">
-          <ion-icon :icon="muted ? volumeHigh : volumeMute"></ion-icon>
+          <ion-icon :icon="expand"></ion-icon>
         </button>
       </div>
     </div>
@@ -59,6 +67,8 @@ export default {
       playButton: "",
       muteButton: "",
       fullScreenButton: "",
+      seekBar: "",
+      volumeBar: "",
     };
   },
   methods: {
@@ -90,10 +100,17 @@ export default {
         this.video.webkitRequestFullscreen(); // Chrome and Safari
       }
     },
+
+    videoVolume() {
+      this.video.volume = this.volumeBar.value;
+    },
+    seek() {
+      let time = this.video.duration * (this.seekBar.value / 100);
+      this.video.currentTime = time;
+    },
   },
 
   mounted() {
-    // eslint-disable
     this.video = document.getElementById("video");
 
     // Buttons
@@ -102,8 +119,20 @@ export default {
     this.fullScreenButton = document.getElementById("full-screen");
 
     // // Sliders
-    // var seekBar = document.getElementById("seek-bar");
-    // var volumeBar = document.getElementById("volume-bar");
+    this.seekBar = document.getElementById("seek-bar");
+    this.volumeBar = document.getElementById("volume-bar");
+
+    this.video.addEventListener("timeupdate", () => {
+      let value = (100 / this.video.duration) * this.video.currentTime;
+      this.seekBar.value = value;
+    });
+    this.seekBar.addEventListener("mousedown", () => {
+      this.video.pause();
+    });
+
+    this.seekBar.addEventListener("mouseup", () => {
+      this.video.play();
+    });
   },
 };
 </script>
@@ -128,15 +157,26 @@ export default {
   -o-transition: opacity 0.3s;
   -ms-transition: opacity 0.3s;
   transition: opacity 0.3s;
-  background-image: linear-gradient(bottom, rgb(3, 113, 168) 13%, rgb(0, 136, 204) 100%);
+  background-image: linear-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.13, rgb(24 84 15)),
+    color-stop(1, rgb(65 191 46 / 89%))
+  );
 
   background-image: -webkit-gradient(
     linear,
     left bottom,
     left top,
-    color-stop(0.13, rgb(3, 113, 168)),
-    color-stop(1, rgb(0, 136, 204))
+    color-stop(0.13, rgb(24 84 15)),
+    color-stop(1, rgb(65 191 46 / 89%))
   );
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #video-container:hover #video-controls {
@@ -144,7 +184,8 @@ export default {
 }
 
 button {
-  background: rgba(0, 0, 0, 0.5);
+  background: transparent;
+  outline: none;
   border: 0;
   color: #eee;
   -webkit-border-radius: 3px;
@@ -153,6 +194,11 @@ button {
   border-radius: 3px;
 }
 
+ion-icon.md.hydrated {
+  width: 43px;
+  color: black;
+  box-shadow: 1px 2px 3px black;
+}
 button:hover {
   cursor: pointer;
 }
