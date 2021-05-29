@@ -20,7 +20,12 @@
       </div>
       <div v-else>
         <div class="card" v-if="options.length && !loading">
-          <a v-for="(ep, index) in options" :key="index" class="text-sm cursor-pointer" >
+          <a
+            v-for="(ep, index) in options"
+            :key="index"
+            class="text-sm cursor-pointer"
+            @click="stream(ep.link)"
+          >
             {{ ep.name }}
           </a>
         </div>
@@ -59,6 +64,12 @@ export default {
     },
   },
   methods: {
+    stream(link) {
+      this.$router.push({
+        name: "Stream",
+        query: { link: link },
+      });
+    },
     getDetails() {
       this.loading = true;
       this.options = [];
