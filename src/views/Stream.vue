@@ -24,7 +24,7 @@
         <button type="button" id="play-pause" class="play" @click="play_pause_btn()">
           <ion-icon :icon="playing ? pause : play"></ion-icon>
         </button>
-        <p class="text-black font-bold">0:00 / {{ video_duration }}</p>
+        <p class="text-black font-bold">{{video_current_time}} / {{ video_duration }}</p>
         <input type="range" id="seek-bar" value="0" @change="seek()" />
         <button type="button" id="mute" @click="mute_btn()">
           <ion-icon :icon="muted ? volumeMute : volumeHigh"></ion-icon>
@@ -70,13 +70,11 @@ export default {
       fullScreenButton: "",
       seekBar: "",
       volumeBar: "",
+      video_duration: "0:00",
+      video_current_time: "0:00",
     };
   },
-  computed: {
-    video_duration() {
-      return Math.round(this.video.duration);
-    },
-  },
+
   methods: {
     formatTime(seconds) {
       let minutes = Math.floor(seconds / 60);
@@ -85,7 +83,17 @@ export default {
       seconds = seconds >= 10 ? seconds : "0" + seconds;
       return minutes + ":" + seconds;
     },
+    setTime(){
+      this.video_duration = this.formatTime(Math.round(this.video.duration));
+          setInterval(()=>{
+    this.video_current_time = this.formatTime(Math.round(video.currentTime));
+
+    // Get HTML5 video time duration
+    $('.ttime').html(formatTime(video.duration - Math.round(video.currentTime)));
+  }, 500);
+    },
     play_pause_btn() {
+
       if (this.video.paused == true) {
         this.video.play();
         this.playing = true;
