@@ -21,7 +21,7 @@
       </video>
       <!-- Video Controls -->
       <div id="video-controls">
-        <button type="button" id="play-pause" class="play">
+        <button type="button" id="play-pause" class="play" @click="play_pause_btn()">
           <ion-icon :icon="playing ? pause : play"></ion-icon>
         </button>
         <input type="range" id="seek-bar" value="0" />
@@ -37,17 +37,48 @@
 import { IonIcon } from "@ionic/vue";
 import { expand, play, pause } from "ionicons/icons";
 import { IonContent } from "@ionic/vue";
-import "../helper/video.js";
+// import "../helper/video.js";
 export default {
   name: "stream",
   components: { IonContent, IonIcon },
   data() {
     return {
       playing: false,
+      muted: false,
       expand,
       play,
       pause,
+
+      video: "",
+      playButton: "",
+      muteButton: "",
+      fullScreenButton: "",
     };
+  },
+  methods: {
+    play_pause_btn() {
+      if (this.video.paused == true) {
+        this.video.play();
+        this.playing = true;
+      } else {
+        this.video.pause();
+        this.playing = false;
+      }
+    },
+  },
+
+  mounted() {
+    // eslint-disable
+    this.video = document.getElementById("video");
+
+    // Buttons
+    this.playButton = document.getElementById("play-pause");
+    this.muteButton = document.getElementById("mute");
+    this.fullScreenButton = document.getElementById("full-screen");
+
+    // // Sliders
+    // var seekBar = document.getElementById("seek-bar");
+    // var volumeBar = document.getElementById("volume-bar");
   },
 };
 </script>
@@ -55,6 +86,7 @@ export default {
 <style scoped>
 #video-container {
   width: 640px;
+  max-width: 98vw;
   height: 365px;
   position: relative;
 }
@@ -72,10 +104,6 @@ export default {
   -ms-transition: opacity 0.3s;
   transition: opacity 0.3s;
   background-image: linear-gradient(bottom, rgb(3, 113, 168) 13%, rgb(0, 136, 204) 100%);
-  background-image: -o-linear-gradient(bottom, rgb(3, 113, 168) 13%, rgb(0, 136, 204) 100%);
-  background-image: -moz-linear-gradient(bottom, rgb(3, 113, 168) 13%, rgb(0, 136, 204) 100%);
-  background-image: -webkit-linear-gradient(bottom, rgb(3, 113, 168) 13%, rgb(0, 136, 204) 100%);
-  background-image: -ms-linear-gradient(bottom, rgb(3, 113, 168) 13%, rgb(0, 136, 204) 100%);
 
   background-image: -webkit-gradient(
     linear,
