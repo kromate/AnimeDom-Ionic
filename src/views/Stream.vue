@@ -1,6 +1,6 @@
 <template>
   <IonContent>
-    <div id="video-container mx-auto">
+    <div class="video-container mx-auto flex justify-center mt-3">
       <!-- Video -->
       <video
         id="video"
@@ -24,9 +24,10 @@
         <button type="button" id="play-pause" class="play" @click="play_pause_btn()">
           <ion-icon :icon="playing ? pause : play"></ion-icon>
         </button>
+        <p class="text-black font-bold">0:00 / {{ video_duration }}</p>
         <input type="range" id="seek-bar" value="0" @change="seek()" />
         <button type="button" id="mute" @click="mute_btn()">
-          <ion-icon :icon="muted ? volumeHigh : volumeMute"></ion-icon>
+          <ion-icon :icon="muted ? volumeMute : volumeHigh"></ion-icon>
         </button>
         <input
           type="range"
@@ -71,7 +72,19 @@ export default {
       volumeBar: "",
     };
   },
+  computed: {
+    video_duration() {
+      return Math.round(this.video.duration);
+    },
+  },
   methods: {
+    formatTime(seconds) {
+      let minutes = Math.floor(seconds / 60);
+      minutes = minutes >= 10 ? minutes : "0" + minutes;
+      seconds = Math.floor(seconds % 60);
+      seconds = seconds >= 10 ? seconds : "0" + seconds;
+      return minutes + ":" + seconds;
+    },
     play_pause_btn() {
       if (this.video.paused == true) {
         this.video.play();
@@ -138,7 +151,7 @@ export default {
 </script>
 
 <style scoped>
-#video-container {
+.video-container {
   width: 640px;
   max-width: 98vw;
   height: 365px;
@@ -179,7 +192,7 @@ export default {
   align-items: center;
 }
 
-#video-container:hover #video-controls {
+.video-container:hover #video-controls {
   opacity: 0.9;
 }
 
@@ -195,7 +208,7 @@ button {
 }
 
 ion-icon.md.hydrated {
-  width: 43px;
+  width: 30px;
   color: black;
   box-shadow: 1px 2px 3px black;
 }
@@ -204,7 +217,7 @@ button:hover {
 }
 
 #seek-bar {
-  width: 360px;
+  width: 260px;
 }
 
 #volume-bar {
