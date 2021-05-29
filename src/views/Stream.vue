@@ -9,8 +9,9 @@
         allowfullscreen="allow"
         preload="metadata"
         poster="@/assets/general/Poster.png"
+        @ended="playing == false"
       >
-        <source :src="require('@/helper/test.mp4')" type="video/mp4" />
+        <source :src="this.$route.query.link" type="video/mp4" />
         <p>
           Your browser doesn't support HTML5 video.
           <a href="videos/mikethefrog.mp4">Download</a> the video instead.
@@ -148,6 +149,11 @@ export default {
     this.seekBar.addEventListener("mouseup", () => {
       this.video.play();
     });
+  },
+  created() {
+    if (this.$route.query.link == undefined) {
+      this.$router.push("/");
+    }
   },
 };
 </script>

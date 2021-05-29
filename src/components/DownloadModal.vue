@@ -1,20 +1,40 @@
 <template>
   <transition name="slide" appear>
     <div class="bg" v-if="modal" @click="close($event)">
-      <div class="card" v-if="options.length && !loading">
-        <a
-          v-for="(ep, index) in options"
-          :key="index"
-          :href="ep.link"
-          target="_blank"
-          class="text-sm"
-        >
-          {{ ep.name }}
-        </a>
-      </div>
+      <div v-if="mode">
+        <div class="card" v-if="options.length && !loading">
+          <a
+            v-for="(ep, index) in options"
+            :key="index"
+            :href="ep.link"
+            target="_blank"
+            class="text-sm"
+          >
+            {{ ep.name }} {{ mode }}
+          </a>
+        </div>
 
+        <div v-else>
+          <Loader />
+        </div>
+      </div>
       <div v-else>
-        <Loader />
+        <div class="card" v-if="options.length && !loading">
+          <p>jjjjjjjjjjj</p>
+          <a
+            v-for="(ep, index) in options"
+            :key="index"
+            :href="ep.link"
+            target="_blank"
+            class="text-sm"
+          >
+            {{ ep.name }} {{ mode }}
+          </a>
+        </div>
+
+        <div v-else>
+          <Loader />
+        </div>
       </div>
     </div>
   </transition>
@@ -30,6 +50,7 @@ export default {
     return {
       loading: false,
       options: [],
+      mode: localStorage.getItem("mode") == "Download",
     };
   },
 
@@ -41,6 +62,7 @@ export default {
   watch: {
     modal() {
       this.getDetails();
+      this.mode = localStorage.getItem("mode") == "Download";
     },
   },
   methods: {
