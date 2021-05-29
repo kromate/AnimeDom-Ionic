@@ -142,13 +142,13 @@ export default {
       let value = (100 / this.video.duration) * this.video.currentTime;
       this.seekBar.value = value;
     });
-    this.seekBar.addEventListener("mousedown", () => {
-      this.video.pause();
-    });
+    // this.seekBar.addEventListener("mousedown", () => {
+    //   this.video.pause();
+    // });
 
-    this.seekBar.addEventListener("mouseup", () => {
-      this.video.play();
-    });
+    // this.seekBar.addEventListener("mouseup", () => {
+    //   this.video.play();
+    // });
   },
   created() {
     if (this.$route.query.link == undefined) {
