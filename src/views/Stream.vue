@@ -14,7 +14,7 @@
         <source :src="$route.query.link" type="video/mp4" />
         <p>
           Your browser doesn't support HTML5 video.
-          <a href="videos/mikethefrog.mp4">Download</a> the video instead.
+          <a :href="$route.query.link">Download</a> the video instead.
         </p>
       </video>
       <!-- Video Controls -->
