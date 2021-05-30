@@ -1,9 +1,14 @@
 <template>
   <IonContent>
     <Modal :showModal="true" title="Sign In" sub="you need to sign in to use certain features">
-      <button class="loginBtn loginBtn--google">
-        Login with Google
-      </button>
+      <div class="mt-3">
+        <button class="loginBtn loginBtn--google max-w-xs" @click="google()">
+          Login with Google
+        </button>
+        <button class="loginBtn loginBtn--twitter max-w-xs" @click="twitter()">
+          Login with Twitter
+        </button>
+      </div>
     </Modal>
     <div class="container mx-auto" v-if="data.name">
       <DescriptionModal :showModal="showModal" :link="link" @close="showModal = false" />
@@ -416,6 +421,13 @@ button {
   border-radius: 0.2em;
   font-size: 16px;
   color: #fff;
+  width: 230px;
+  max-width: 80vw;
+  height: 42px;
+  background-color: #fcfcfc;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
+  color: black;
 }
 .loginBtn:before {
   content: "";
@@ -431,5 +443,26 @@ button {
 }
 .loginBtn:active {
   box-shadow: inset 0 0 0 32px rgba(0, 0, 0, 0.1);
+}
+/* Google */
+.loginBtn--google {
+  border: 1px solid #ea4335;
+  color: #ea4335;
+}
+.loginBtn--twitter {
+  border: 1px solid #00acee;
+  color: #00acee;
+}
+.loginBtn--google:before {
+  background: #ea4335;
+  background-origin: content-box;
+  background-position: center;
+  padding: 5px;
+}
+.loginBtn--twitter:before {
+  background: #00acee;
+  background-origin: content-box;
+  background-position: center;
+  padding: 5px;
 }
 </style>
