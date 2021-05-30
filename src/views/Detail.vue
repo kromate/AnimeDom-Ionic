@@ -14,7 +14,7 @@
         </p>
         <p>
           <button class="nominate-button movie-btn w-100" :href="data.link">
-            Save for later
+            <ion-icon :icon="save" class="text-xl mr-4"></ion-icon> Save for later
           </button>
         </p>
 
@@ -104,14 +104,16 @@
 </template>
 
 <script>
-import { IonContent } from "@ionic/vue";
+import { IonContent, IonIcon } from "@ionic/vue";
 import DescriptionModal from "@/components/DownloadModal.vue";
 import Loader from "@/components/Loader.vue";
+import { save } from "ionicons/icons";
 export default {
-  components: { DescriptionModal, Loader, IonContent },
+  components: { DescriptionModal, Loader, IonContent, IonIcon },
   name: "Details",
   data() {
     return {
+      save,
       data: "",
       Episodes: [],
       showModal: false,

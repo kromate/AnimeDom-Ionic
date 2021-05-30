@@ -12,6 +12,7 @@ import { IonicVue } from '@ionic/vue';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
+import Modal from '@/components/Modal.vue';
 
 const firebaseConfig = {
   apiKey: process.env.VUE_APP_API_KEY,
@@ -31,7 +32,7 @@ import './theme/variables.css';
 import './theme/tailwind.css';
 
 const app =
-createApp(App).use(store).use(IonicVue).use(router);
+createApp(App).use(store).use(IonicVue).use(router).component('Modal', Modal);
 
 router.isReady().then(() => {
   app.mount('#app');
