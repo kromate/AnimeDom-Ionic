@@ -37,9 +37,8 @@
 <script>
 import { IonContent } from "@ionic/vue";
 import searchCard from "@/components/searchCard.vue";
-import Loader from "@/components/Loader.vue";
 export default {
-  components: { searchCard, IonContent, Loader },
+  components: { searchCard, IonContent },
   data() {
     return {
       loading: false,

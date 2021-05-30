@@ -28,9 +28,8 @@
 import { IonContent } from "@ionic/vue";
 import genreCard from "@/components/genreCard.vue";
 import genresListingCard from "@/components/genresListingCard.vue";
-import Loader from "@/components/Loader.vue";
 export default {
-  components: { genreCard, genresListingCard, IonContent, Loader },
+  components: { genreCard, genresListingCard, IonContent },
   data() {
     return {
       loading: false,

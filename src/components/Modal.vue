@@ -19,7 +19,6 @@
 <script>
 
 export default {
-  components: { Loader },
   name: "success",
   props: ["showModal", "title", "sub"],
   data() {

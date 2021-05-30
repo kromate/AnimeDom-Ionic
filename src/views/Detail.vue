@@ -3,7 +3,8 @@
     <Modal :showModal="true" title="Sign In" sub="you need to sign in to use certain features">
       <div class="mt-3">
         <button class="loginBtn loginBtn--google max-w-xs" @click="google()">
-          Login with Google
+          <!-- Login with Google -->
+          <Loader />
         </button>
         <button class="loginBtn loginBtn--twitter max-w-xs" @click="twitter()">
           Login with Twitter
@@ -116,10 +117,9 @@
 <script>
 import { IonContent, IonIcon } from "@ionic/vue";
 import DescriptionModal from "@/components/DownloadModal.vue";
-import Loader from "@/components/Loader.vue";
 import { save } from "ionicons/icons";
 export default {
-  components: { DescriptionModal, Loader, IonContent, IonIcon },
+  components: { DescriptionModal, IonContent, IonIcon },
   name: "Details",
   data() {
     return {

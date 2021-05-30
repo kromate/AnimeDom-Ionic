@@ -39,9 +39,7 @@
 </template>
 
 <script>
-import Loader from "@/components/Loader.vue";
 export default {
-  components: { Loader },
   name: "success",
   props: ["showModal", "link"],
   data() {

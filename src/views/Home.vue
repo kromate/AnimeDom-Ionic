@@ -26,9 +26,8 @@
 <script>
 import { IonContent } from "@ionic/vue";
 import animeCard from "@/components/animeCard.vue";
-import Loader from "@/components/Loader.vue";
 export default {
-  components: { animeCard, IonContent, Loader },
+  components: { animeCard, IonContent },
   data() {
     return {
       listening: false,
