@@ -3,11 +3,12 @@
     <Modal :showModal="true" title="Sign In" sub="you need to sign in to use certain features">
       <div class="mt-3">
         <button class="loginBtn loginBtn--google max-w-xs" @click="google()">
-          <!-- Login with Google -->
-          <Loader />
+          <span v-if="!g_loading">Login with Google</span>
+          <Loader v-else />
         </button>
         <button class="loginBtn loginBtn--twitter max-w-xs" @click="twitter()">
-          Login with Twitter
+          <span v-if="!t_loading">Login with Twitter</span>
+          <Loader v-else />
         </button>
       </div>
     </Modal>
@@ -125,6 +126,8 @@ export default {
     return {
       save,
       data: "",
+      g_loading: false,
+      t_loading: false,
       Episodes: [],
       showModal: false,
       link: "",
@@ -138,6 +141,12 @@ export default {
   },
 
   methods: {
+    twitter() {
+      this.t_loading = !this.t_loading;
+    },
+    google() {
+      this.g_loading = !this.g_loading;
+    },
     getLinks(link) {
       let uplink = encodeURIComponent(link.trim());
       this.link = uplink;
@@ -424,7 +433,7 @@ button {
   width: 230px;
   max-width: 80vw;
   height: 42px;
-  background-color: #fcfcfc;
+  background-color: #161515;
   border-radius: 2px;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
   color: black;

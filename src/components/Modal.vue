@@ -17,7 +17,6 @@
 </template>
 
 <script>
-
 export default {
   name: "success",
   props: ["showModal", "title", "sub"],
@@ -75,7 +74,7 @@ a {
 .card {
   overflow: hidden;
   padding: 1rem;
-  background: white;
+  background: #515d4b;
   width: 500px;
   min-height: 300px;
   max-width: 85vw;
