@@ -1,6 +1,6 @@
 <template>
   <IonContent>
-    <Modal :showModal="true" title="Sign In" sub="you need to sign in to use certain features">
+    <Modal :showModal="authModal" title="Sign In" sub="you need to sign in to use certain features">
       <div class="mt-3">
         <button class="loginBtn loginBtn--google max-w-xs" @click="google()">
           <span v-if="!g_loading">Login with Google</span>
@@ -11,6 +11,8 @@
           <Loader v-else />
         </button>
       </div>
+    </Modal>
+    <Modal :showModal="successModal" title="Successful" sub="You have successfully signed in ">
     </Modal>
     <div class="container mx-auto" v-if="data.name">
       <DescriptionModal :showModal="showModal" :link="link" @close="showModal = false" />
@@ -119,6 +121,8 @@
 import { IonContent, IonIcon } from "@ionic/vue";
 import DescriptionModal from "@/components/DownloadModal.vue";
 import { save } from "ionicons/icons";
+import firebase from "firebase/app";
+import "firebase/auth";
 export default {
   components: { DescriptionModal, IonContent, IonIcon },
   name: "Details",
@@ -129,7 +133,8 @@ export default {
       g_loading: false,
       t_loading: false,
       Episodes: [],
-      showModal: false,
+      authModal: false,
+      successModal: false,
       link: "",
       show: false,
     };
@@ -146,6 +151,23 @@ export default {
     },
     google() {
       this.g_loading = !this.g_loading;
+
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(() => {
+          this.authModal = false;
+          this.successModal = true;
+          // const user = firebase.auth().currentUser;
+          // this.$store.commit("loginUser", user);
+          // this.$router.push({ path: "/home" });
+        })
+        .catch((error) => {
+          this.loader = false;
+          console.log(error.message);
+          this.Error = error.message;
+        });
     },
     getLinks(link) {
       let uplink = encodeURIComponent(link.trim());
