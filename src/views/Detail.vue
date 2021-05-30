@@ -341,6 +341,7 @@ h1 {
 @media (max-width: 800px) {
   h2 {
     margin-top: 5rem;
+    font-size: 1.5rem;
   }
   img {
     position: static;
@@ -377,6 +378,7 @@ h1 {
 }
 button {
   width: 100%;
+  min-width: 200px;
   margin: 1rem 0 0;
   background: #18540f;
   color: #fff;
