@@ -34,7 +34,16 @@ const routes = [
     path: "/stream",
     name: "Stream",
     component: () => import("@/views/Stream.vue"),
-
+  },
+  {
+    path: "/notifications",
+    name: "Notifications",
+    component: () => import("@/views/Notifications.vue"),
+  },
+  {
+    path: "/savedAnimes",
+    name: "Saved Animes",
+    component: () => import("@/views/SavedAnimes.vue"),
   },
 ]
 

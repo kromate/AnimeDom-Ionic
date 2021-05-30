@@ -32,8 +32,8 @@
             <ion-item> <ion-icon :icon="listCircle"></ion-icon>Genre</ion-item>
           </router-link>
 
-          <router-link to="/binge">
-            <ion-item> <ion-icon :icon="apps"></ion-icon>Binge</ion-item>
+          <router-link to="/saved">
+            <ion-item> <ion-icon :icon="save"></ion-icon>Saved Animes</ion-item>
           </router-link>
 
           <!-- <router-link class="box" to="/tutor">
@@ -83,7 +83,7 @@ import {
   IonList,
   menuController,
 } from "@ionic/vue";
-import { add, home, search, listCircle, apps } from "ionicons/icons";
+import { add, home, search, listCircle, save } from "ionicons/icons";
 export default {
   name: "Menu",
   components: {
@@ -102,7 +102,7 @@ export default {
       add,
       search,
       listCircle,
-      apps,
+      save,
       connected: navigator.onLine,
       mode: localStorage.getItem("mode"),
     };

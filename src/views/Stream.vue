@@ -225,7 +225,8 @@ button:hover {
 }
 
 #seek-bar {
-  width: 200px;
+  width: 20
+  z0px;
 }
 
 #volume-bar {
