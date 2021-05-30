@@ -1,11 +1,11 @@
 <template>
   <transition name="slide" appear>
-    <div class="bg" v-if="modal" @click="close($event)">
+    <div class="bg" v-if="showModal" @click="close($event)">
       <div>
-        <div class="card" v-if="!loading">
-          <a>
-            Name
-          </a>
+        <div class="card text-black" v-if="loading">
+          <h1 class="text-xl font-bold">{{title}}</h1>
+          <p>you need to sign in to use certain features</p>
+          <slot />
         </div>
 
         <div v-else>
@@ -21,7 +21,7 @@ import Loader from "@/components/Loader.vue";
 export default {
   components: { Loader },
   name: "success",
-  props: ["showModal"],
+  props: ["showModal", "title", "sub"],
   data() {
     return {
       loading: false,
@@ -31,8 +31,10 @@ export default {
   },
 
   methods: {
-    close() {
-      this.$emit("close");
+    close(e) {
+      if (e.target.className == "bg") {
+        this.$emit("close");
+      }
     },
   },
 

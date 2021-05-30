@@ -1,5 +1,6 @@
 <template>
   <IonContent>
+    <Modal :showModal="true" title="Sign In" />
     <div class="container mx-auto" v-if="data.name">
       <DescriptionModal :showModal="showModal" :link="link" @close="showModal = false" />
       <div class="details mx-2">
