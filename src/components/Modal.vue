@@ -3,8 +3,8 @@
     <div class="bg" v-if="showModal" @click="close($event)">
       <div>
         <div class="card text-black" v-if="loading">
-          <h1 class="text-xl font-bold">{{title}}</h1>
-          <p>you need to sign in to use certain features</p>
+          <h1 class="text-xl font-bold">{{ title }}</h1>
+          <p>{{ sub }}</p>
           <slot />
         </div>
 
@@ -77,14 +77,16 @@ a {
   overflow: hidden;
   padding: 1rem;
   background: white;
-  width: 600px;
+  width: 500px;
+  min-height: 300px;
   max-width: 85vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* flex-direction: column; */
-  flex-wrap: wrap;
   text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .slide-enter-active,
 .slide-leave-active {
