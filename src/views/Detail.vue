@@ -137,7 +137,7 @@ export default {
       g_loading: false,
       t_loading: false,
       Episodes: [],
-      authModal: true,
+      authModal: false,
       successModal: false,
       link: "",
       show: false,
