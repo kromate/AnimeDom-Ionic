@@ -14,7 +14,7 @@
     </Modal>
     <Modal :showModal="successModal" title="Successful" sub="You have successfully signed in ">
       <template v-slot:image>
-        <ion-icon :icon="checkmarkCircle" class="text-5xl"></ion-icon>
+        <ion-icon :icon="checkmarkCircle" class="text-7xl"></ion-icon>
       </template>
     </Modal>
     <div class="container mx-auto" v-if="data.name">
@@ -137,8 +137,8 @@ export default {
       g_loading: false,
       t_loading: false,
       Episodes: [],
-      authModal: false,
-      successModal: true,
+      authModal: true,
+      successModal: false,
       link: "",
       show: false,
     };

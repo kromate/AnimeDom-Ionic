@@ -4,8 +4,8 @@
       <div>
         <div class="card text-black" v-if="loading">
           <slot name="image"></slot>
-          <h1 class="text-xl font-bold">{{ title }}</h1>
-          <p>{{ sub }}</p>
+          <h1 class="text-3xl font-bold">{{ title }}</h1>
+          <p class="text-xl">{{ sub }}</p>
           <slot />
         </div>
 
