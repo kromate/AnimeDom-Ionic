@@ -30,7 +30,10 @@
           {{ data.summary }}
         </p>
         <p>
-          <button class="nominate-button movie-btn w-100" :href="data.link">
+          <button
+            class="nominate-button movie-btn w-100"
+            @click="save({ link: $route.query.link, img: $route.query.image })"
+          >
             <ion-icon :icon="save" class="text-xl mr-4"></ion-icon> Save for later
           </button>
         </p>
