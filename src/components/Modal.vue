@@ -3,6 +3,7 @@
     <div class="bg" v-if="showModal" @click="close($event)">
       <div>
         <div class="card text-black" v-if="loading">
+          <slot name="image"></slot>
           <h1 class="text-xl font-bold">{{ title }}</h1>
           <p>{{ sub }}</p>
           <slot />

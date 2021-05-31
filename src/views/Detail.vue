@@ -13,6 +13,9 @@
       </div>
     </Modal>
     <Modal :showModal="successModal" title="Successful" sub="You have successfully signed in ">
+      <template v-slot:image>
+        <ion-icon :icon="checkmarkCircle" class="text-5xl"></ion-icon>
+      </template>
     </Modal>
     <div class="container mx-auto" v-if="data.name">
       <DescriptionModal :showModal="showModal" :link="link" @close="showModal = false" />
@@ -120,7 +123,7 @@
 <script>
 import { IonContent, IonIcon } from "@ionic/vue";
 import DescriptionModal from "@/components/DownloadModal.vue";
-import { save } from "ionicons/icons";
+import { save, checkmarkCircle } from "ionicons/icons";
 import firebase from "firebase/app";
 import "firebase/auth";
 export default {
@@ -128,13 +131,14 @@ export default {
   name: "Details",
   data() {
     return {
+      checkmarkCircle,
       save,
       data: "",
       g_loading: false,
       t_loading: false,
       Episodes: [],
       authModal: false,
-      successModal: false,
+      successModal: true,
       link: "",
       show: false,
     };
