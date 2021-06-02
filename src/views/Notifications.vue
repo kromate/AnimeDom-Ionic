@@ -13,10 +13,9 @@
         <br />
         Ah yes, I haven't introduced myself yet 💆. I'm Kromate, a full stack Javascript developer
         and I built both the frontend and backend of this application. I've also built some really
-        cool stuff. You can check them out on my GitHub or my portfolio.
-        <a href="https://github.com/kromate" class="text-l green font-bold">here on my github</a> or
-        my
-        <a href="https://kromate.github.io/portfolio/" class="text-l green font-bold">portfolio</a>
+        cool stuff. You can check them out on my
+        <a href="https://github.com/kromate" class="text-l green font-bold">GitHub</a> or my
+        <a href="https://kromate.github.io/portfolio/" class="text-l green font-bold">portfolio</a>.
       </p>
     </div>
   </IonContent>

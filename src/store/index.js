@@ -12,9 +12,22 @@ export default createStore({
     searchAnimeList:[],
     genreAnimeList:[],
     genresAnimeList:[],
-    searchTitle:""
+    saved:[],
+    searchTitle:"",
+    user: JSON.parse(localStorage.getItem('user')),
   },
   mutations: {
+
+  loginUser(state, payload){
+    state.user = payload
+
+    localStorage.setItem('user', JSON.stringify(payload));
+
+  },
+    logOut(state){
+      state.user = null
+    localStorage.setItem('user', null);
+    },
     addGenresAnimeList(state, data){
       state.genresAnimeList = data
     },
