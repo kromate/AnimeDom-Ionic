@@ -25,7 +25,12 @@
       </ion-toolbar>
     </ion-header>
     <SideBar />
-    <Modal :showModal="authModal" title="Sign In" sub="you need to sign in to use certain features">
+    <Modal
+      :showModal="authModal"
+      title="Sign In"
+      sub="you need to sign in to use certain features"
+      @close="authModal = false"
+    >
       <div class="mt-3">
         <button class="loginBtn loginBtn--google max-w-xs" @click="google()">
           <span v-if="!g_loading">Login with Google</span>
@@ -37,9 +42,14 @@
         </button>
       </div>
     </Modal>
-    <Modal :showModal="successModal" title="Successful" sub="You have successfully signed in ">
+    <Modal
+      :showModal="successModal"
+      title="Successful"
+      sub="You have successfully signed in "
+      @close="successModal = false"
+    >
       <template v-slot:image>
-        <ion-icon :icon="checkmarkCircle" class="text-7xl"></ion-icon>
+        <ion-icon :icon="checkmarkCircle" class="text-6xl"></ion-icon>
       </template>
     </Modal>
     <router-view id="main" class="router" />
@@ -89,11 +99,22 @@ export default {
   },
 
   computed: {
-    successModal() {
-      return this.$store.state.successModal;
+    successModal: {
+      get() {
+        return this.$store.state.successModal;
+      },
+      set(value) {
+        this.$store.state.successModal = value;
+      },
     },
-    authModal() {
-      return this.$store.state.authModal;
+    authModal: {
+      get() {
+        return this.$store.state.authModal;
+      },
+      set(value) {
+        console.log(value);
+        this.$store.state.authModal = value;
+      },
     },
     show() {
       if (this.$route.meta.requiresGuest) {
@@ -123,10 +144,12 @@ export default {
           const user = firebase.auth().currentUser;
           this.$store.commit("loginUser", user);
           this.t_loading = !this.t_loading;
+          this.authModal = false;
+          this.successModal = true;
         })
         .catch((error) => {
           this.loader = false;
-          console.log(error.message);
+          console.log(error);
           this.Error = error.message;
           this.t_loading = !this.t_loading;
         });
@@ -167,5 +190,25 @@ body {
 
 .IonSize {
   font-size: 1.5rem;
+}
+button {
+  width: 100%;
+  min-width: 200px;
+  margin: 1rem 0 0;
+  background: #18540f;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  padding: 0.7rem 0;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  font-size: 0.7rem;
+  overflow: hidden;
+  position: relative;
+  transition: background 0.2s linear;
+  cursor: pointer;
 }
 </style>

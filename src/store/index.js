@@ -17,12 +17,17 @@ export default createStore({
     genreAnimeList:[],
     genresAnimeList:[],
     saved:[],
+    savedLoading:false,
     authModal: false,
     successModal: false,
     searchTitle:"",
     user: JSON.parse(localStorage.getItem('user')),
   },
   mutations: {
+
+    changeSavedLoading(state, payload){
+      state.savedLoading = payload
+    },
     changeSuccessModal(state, payload){
       state.successModal = payload
     },
@@ -99,7 +104,7 @@ export default createStore({
         collection
         .doc(firebase.auth().currentUser.uid)
         .update({
-          cart:firebase.firestore.FieldValue.arrayUnion(context.state.detailedItem)}).then(()=>{
+          cart:firebase.firestore.FieldValue.arrayUnion(context.state.selectedSavedAnime)}).then(()=>{
             context.commit("updateLoading", false);
           context.commit("ShowNotifyCart");
         }).catch((err)=>{
@@ -111,11 +116,9 @@ export default createStore({
         const data =   {
           id: context.state.user.uid,
           email: context.state.user.email,
-          favourite: [],
-          orders: [],
-          C_orders: [],
-          cart: [context.state.detailedItem],
-          body:{}
+          saved: [context.state.selectedSavedAnime],
+          playlist: [],
+
         }
         collection
         .doc(firebase.auth().currentUser.uid).set(data).then(()=>{

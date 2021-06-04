@@ -14,6 +14,14 @@
         </p>
         <p>
           <button
+            v-if="savedLoading"
+            class="nominate-button movie-btn w-100"
+            @click="saveAnime({ link: $route.query.link, img: $route.query.image })"
+          >
+            <Loader />
+          </button>
+          <button
+            v-else
             class="nominate-button movie-btn w-100"
             @click="saveAnime({ link: $route.query.link, img: $route.query.image })"
           >
@@ -127,15 +135,16 @@ export default {
     desc() {
       return this.$store.state.desc;
     },
+    savedLoading() {
+      return this.$store.state.savedLoading;
+    },
   },
 
   methods: {
     saveAnime(data) {
       if (this.$store.state.user) {
         this.$store.commit("selectedSavedAnime", data);
-        this.$store.dispatch("show").then(() => {
-          console.log("done ooo ");
-        });
+        this.$store.dispatch("saveAnime");
       } else {
         this.$store.commit("changeAuthModal", true);
       }
@@ -411,61 +420,26 @@ button {
   transition: background 0.2s linear;
   cursor: pointer;
 }
-.loginBtn {
-  box-sizing: border-box;
-  position: relative;
-  /* width: 13em;  - apply for fixed size */
-  margin: 0.2em;
-  padding: 0 15px 0 46px;
-  border: none;
-  text-align: left;
-  line-height: 34px;
-  white-space: nowrap;
-  border-radius: 0.2em;
-  font-size: 16px;
+
+button {
+  width: 100%;
+  min-width: 200px;
+  margin: 1rem 0 0;
+  height: 44px;
+  background: #18540f;
   color: #fff;
-  width: 230px;
-  max-width: 80vw;
-  height: 42px;
-  background-color: #161515;
+  text-transform: uppercase;
+  border: none;
+  padding: 0.7rem 0;
   border-radius: 2px;
-  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
-  color: black;
-}
-.loginBtn:before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 34px;
-  height: 100%;
-}
-.loginBtn:focus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   outline: none;
-}
-.loginBtn:active {
-  box-shadow: inset 0 0 0 32px rgba(0, 0, 0, 0.1);
-}
-/* Google */
-.loginBtn--google {
-  border: 1px solid #ea4335;
-  color: #ea4335;
-}
-.loginBtn--twitter {
-  border: 1px solid #00acee;
-  color: #00acee;
-}
-.loginBtn--google:before {
-  background: #ea4335;
-  background-origin: content-box;
-  background-position: center;
-  padding: 5px;
-}
-.loginBtn--twitter:before {
-  background: #00acee;
-  background-origin: content-box;
-  background-position: center;
-  padding: 5px;
+  font-size: 0.7rem;
+  overflow: hidden;
+  position: relative;
+  transition: background 0.2s linear;
+  cursor: pointer;
 }
 </style>
