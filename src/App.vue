@@ -13,7 +13,7 @@
           <ion-button @click="logout()" v-if="user">
             <ion-icon :icon="logOut" class="IonSize"></ion-icon>
           </ion-button>
-          <ion-button @click="logout()" v-else>
+          <ion-button @click="authModal = true" v-else>
             <ion-icon :icon="logIn" class="IonSize"></ion-icon>
           </ion-button>
           <ion-button>
