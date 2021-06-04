@@ -1,10 +1,14 @@
 /* eslint-disable */
 import { createStore } from 'vuex'
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
 
 export default createStore({
   state: {
     menu:false,
     desc: null,
+    selectedSavedAnime:{},
     homeCategoryView:"",
     homeCategoryViewLink:"",
     recentAnimeList:[],
@@ -17,12 +21,13 @@ export default createStore({
     user: JSON.parse(localStorage.getItem('user')),
   },
   mutations: {
+    selectedSavedAnime(state, payload){
+      state.selectedSavedAnime = payload
+    },
 
   loginUser(state, payload){
     state.user = payload
-
     localStorage.setItem('user', JSON.stringify(payload));
-
   },
     logOut(state){
       state.user = null
@@ -73,6 +78,46 @@ export default createStore({
     },
   },
   actions: {
+
+    async saveAnime(context){
+      const collection = firebase.firestore().collection("users")
+      const user = await collection.doc(context.state.user.uid).get().catch((err)=>{
+        console.log(err);
+        context.commit("Error");
+      })
+      if(user.exists){
+        collection
+        .doc(firebase.auth().currentUser.uid)
+        .update({
+          cart:firebase.firestore.FieldValue.arrayUnion(context.state.detailedItem)}).then(()=>{
+            context.commit("updateLoading", false);
+          context.commit("ShowNotifyCart");
+        }).catch((err)=>{
+          context.commit("updateLoading", false);
+          console.log(err);
+          context.commit("Error");
+        })
+      }else{
+        const data =   {
+          id: context.state.user.uid,
+          email: context.state.user.email,
+          favourite: [],
+          orders: [],
+          C_orders: [],
+          cart: [context.state.detailedItem],
+          body:{}
+        }
+        collection
+        .doc(firebase.auth().currentUser.uid).set(data).then(()=>{
+          context.commit("updateLoading", false);
+          context.commit("ShowNotifyCart");
+        }).catch((err)=>{
+          context.commit("updateLoading", false);
+          console.log(err);
+          context.commit("Error");
+        })
+      }
+    },
   },
   modules: {
   }

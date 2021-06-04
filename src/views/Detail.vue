@@ -154,7 +154,7 @@ export default {
 
   methods: {
     saveAnime(data) {
-      console.log(data);
+      this.$store.commit('selectedSavedAnime', data)
     },
     twitter() {
       this.t_loading = !this.t_loading;
