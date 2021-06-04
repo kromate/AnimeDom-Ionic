@@ -32,11 +32,11 @@
       @close="authModal = false"
     >
       <div class="mt-3">
-        <button class="loginBtn loginBtn--google max-w-xs" @click="google()">
+        <button class="loginBtn loginBtn--google max-w-xs bg-black" @click="google()">
           <span v-if="!g_loading">Login with Google</span>
           <Loader v-else />
         </button>
-        <button class="loginBtn loginBtn--twitter max-w-xs" @click="twitter()">
+        <button class="loginBtn loginBtn--twitter max-w-xs bg-black" @click="twitter()">
           <span v-if="!t_loading">Login with Twitter</span>
           <Loader v-else />
         </button>
@@ -170,7 +170,7 @@ export default {
           this.loader = false;
           console.log(error);
           this.t_loading = !this.t_loading;
-           this.errorModal = true;
+          this.errorModal = true;
         });
     },
     google() {

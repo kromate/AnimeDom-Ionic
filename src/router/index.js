@@ -43,6 +43,9 @@ const routes = [
   {
     path: "/saved",
     name: "Saved Animes",
+    meta: {
+      requiresAuth: true
+    },
     component: () => import("@/views/SavedAnimes.vue"),
   },
 ]
@@ -53,9 +56,15 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  if (requiresAuth && !store.state.user) {
+    store.commit("changeAuthModal", true);
+  }else{
     store.commit("changeMenu")
-next()
+    next()
+  }
+
+
 });
 
 export default router

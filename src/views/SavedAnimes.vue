@@ -5,7 +5,7 @@
         <div>
           <h1 class="green text-4xl font-bold mb-3">Your Saved Animes</h1>
           <div class="flex flex-wrap justify-start ac">
-            <animeCard v-for="n in SavedAnimes" :data="n" :key="n" type="recent" />
+            <savedCard v-for="n in SavedAnimes" :data="n" :key="n" type="recent" />
           </div>
         </div>
       </main>
@@ -19,9 +19,9 @@
 
 <script>
 import { IonContent } from "@ionic/vue";
-import animeCard from "@/components/animeCard.vue";
+import savedCard from "@/components/savedCard.vue";
 export default {
-  components: { animeCard, IonContent },
+  components: { savedCard, IonContent },
   data() {
     return {
       listening: false,
