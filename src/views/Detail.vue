@@ -158,22 +158,39 @@ export default {
     },
     twitter() {
       this.t_loading = !this.t_loading;
+
+      const provider = new firebase.auth.TwitterAuthProvider();
+
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(() => {
+          const user = firebase.auth().currentUser;
+          this.$store.commit("loginUser", user);
+          this.t_loading = !this.t_loading;
+        })
+        .catch((error) => {
+          this.loader = false;
+          console.log(error.message);
+          this.Error = error.message;
+          this.t_loading = !this.t_loading;
+        });
     },
     google() {
       this.g_loading = !this.g_loading;
 
       const provider = new firebase.auth.GoogleAuthProvider();
+
       firebase
         .auth()
         .signInWithPopup(provider)
         .then(() => {
-          this.authModal = false;
-          this.successModal = true;
-          // const user = firebase.auth().currentUser;
-          // this.$store.commit("loginUser", user);
-          // this.$router.push({ path: "/home" });
+          const user = firebase.auth().currentUser;
+          this.$store.commit("loginUser", user);
+          this.g_loading = !this.g_loading;
         })
         .catch((error) => {
+          this.g_loading = !this.g_loading;
           this.loader = false;
           console.log(error.message);
           this.Error = error.message;
