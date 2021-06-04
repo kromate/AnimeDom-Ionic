@@ -89,6 +89,12 @@ export default {
   },
 
   computed: {
+    successModal() {
+      return this.$store.state.successModal;
+    },
+    authModal() {
+      return this.$store.state.authModal;
+    },
     show() {
       if (this.$route.meta.requiresGuest) {
         return false;
@@ -97,7 +103,6 @@ export default {
       }
     },
     user() {
-      console.log(this.$store.state.user);
       return this.$store.state.user;
     },
   },

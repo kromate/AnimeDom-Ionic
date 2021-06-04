@@ -137,7 +137,7 @@ export default {
           console.log("done ooo ");
         });
       } else {
-        this.authModal = true;
+        this.$store.commit("changeAuthModal", true);
       }
     },
 
