@@ -43,6 +43,16 @@
       </div>
     </Modal>
     <Modal
+      :showModal="errorModal"
+      title="Error !"
+      sub="Something went wrong, please try again"
+      @close="errorModal = false"
+    >
+      <template v-slot:image>
+        <ion-icon :icon="warning" class="text-6xl"></ion-icon>
+      </template>
+    </Modal>
+    <Modal
       :showModal="successModal"
       title="Successful"
       sub="Action Successfully perform, tap anywhere to close"
@@ -57,7 +67,7 @@
 </template>
 
 <script>
-import { save, checkmarkCircle } from "ionicons/icons";
+import { save, checkmarkCircle, warning } from "ionicons/icons";
 import firebase from "firebase/app";
 import "firebase/auth";
 import SideBar from "@/components/Sidebar.vue";
@@ -88,6 +98,7 @@ export default {
 
   data() {
     return {
+      warning,
       checkmarkCircle,
       save,
       logIn,
@@ -99,6 +110,14 @@ export default {
   },
 
   computed: {
+    errorModal: {
+      get() {
+        return this.$store.state.errorModal;
+      },
+      set(value) {
+        this.$store.state.errorModal = value;
+      },
+    },
     successModal: {
       get() {
         return this.$store.state.successModal;

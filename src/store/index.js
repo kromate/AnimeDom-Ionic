@@ -20,6 +20,7 @@ export default createStore({
     savedLoading:false,
     authModal: false,
     successModal: false,
+    errorModal: false,
     searchTitle:"",
     user: JSON.parse(localStorage.getItem('user')),
   },
@@ -27,6 +28,9 @@ export default createStore({
 
     changeSavedLoading(state, payload){
       state.savedLoading = payload
+    },
+    changeErrorModal(state, payload){
+      state.errorModal = payload
     },
     changeSuccessModal(state, payload){
       state.successModal = payload
