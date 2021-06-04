@@ -45,7 +45,7 @@
     <Modal
       :showModal="successModal"
       title="Successful"
-      sub="You have successfully signed in "
+      sub="Action Successfully perform, tap anywhere to close"
       @close="successModal = false"
     >
       <template v-slot:image>

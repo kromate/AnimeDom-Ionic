@@ -95,6 +95,7 @@ export default createStore({
   actions: {
 
     async saveAnime(context){
+      context.commit('changeSavedLoading', true)
       const collection = firebase.firestore().collection("users")
       const user = await collection.doc(context.state.user.uid).get().catch((err)=>{
         console.log(err);
@@ -104,9 +105,8 @@ export default createStore({
         collection
         .doc(firebase.auth().currentUser.uid)
         .update({
-          cart:firebase.firestore.FieldValue.arrayUnion(context.state.selectedSavedAnime)}).then(()=>{
-            context.commit("updateLoading", false);
-          context.commit("ShowNotifyCart");
+          saved:firebase.firestore.FieldValue.arrayUnion(context.state.selectedSavedAnime)}).then(()=>{
+            context.commit('changeSavedLoading', false)
         }).catch((err)=>{
           context.commit("updateLoading", false);
           console.log(err);
@@ -122,8 +122,7 @@ export default createStore({
         }
         collection
         .doc(firebase.auth().currentUser.uid).set(data).then(()=>{
-          context.commit("updateLoading", false);
-          context.commit("ShowNotifyCart");
+          context.commit('changeSavedLoading', false)
         }).catch((err)=>{
           context.commit("updateLoading", false);
           console.log(err);
