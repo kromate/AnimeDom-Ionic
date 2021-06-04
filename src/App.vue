@@ -83,6 +83,8 @@ export default {
       logIn,
       logOut,
       notifications,
+      g_loading: false,
+      t_loading: false,
     };
   },
 

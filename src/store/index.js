@@ -17,10 +17,19 @@ export default createStore({
     genreAnimeList:[],
     genresAnimeList:[],
     saved:[],
+    authModal: false,
+    successModal: false,
     searchTitle:"",
     user: JSON.parse(localStorage.getItem('user')),
   },
   mutations: {
+    changeSuccessModal(state, payload){
+      state.successModal = payload
+    },
+    changeAuthModal(state, payload){
+      state.authModal = payload
+    },
+
     selectedSavedAnime(state, payload){
       state.selectedSavedAnime = payload
     },
