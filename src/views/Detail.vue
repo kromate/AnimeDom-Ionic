@@ -154,7 +154,14 @@ export default {
 
   methods: {
     saveAnime(data) {
-      this.$store.commit('selectedSavedAnime', data)
+      if (this.$store.state.user) {
+        this.$store.commit("selectedSavedAnime", data);
+        this.$store.dispatch("show").then(() => {
+          console.log("done ooo ");
+        });
+      } else {
+        this.authModal = true;
+      }
     },
     twitter() {
       this.t_loading = !this.t_loading;
@@ -188,6 +195,8 @@ export default {
           const user = firebase.auth().currentUser;
           this.$store.commit("loginUser", user);
           this.g_loading = !this.g_loading;
+          this.authModal = false;
+          this.successModal = true;
         })
         .catch((error) => {
           this.g_loading = !this.g_loading;
