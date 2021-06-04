@@ -41,7 +41,7 @@ const routes = [
     component: () => import("@/views/Notifications.vue"),
   },
   {
-    path: "/savedAnimes",
+    path: "/saved",
     name: "Saved Animes",
     component: () => import("@/views/SavedAnimes.vue"),
   },
