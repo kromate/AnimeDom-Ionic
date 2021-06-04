@@ -31,6 +31,7 @@ firebase.analytics();
 /* Theme variables */
 import './theme/variables.css';
 import './theme/tailwind.css';
+import './registerServiceWorker'
 
 const app =
 createApp(App).use(store).use(IonicVue).use(router).component('Modal', Modal).component('Loader', Loader);
