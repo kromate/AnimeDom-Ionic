@@ -107,6 +107,7 @@ export default createStore({
         .update({
           saved:firebase.firestore.FieldValue.arrayUnion(context.state.selectedSavedAnime)}).then(()=>{
             context.commit('changeSavedLoading', false)
+            context.commit('changeSuccessModal', true)
         }).catch((err)=>{
           context.commit("updateLoading", false);
           console.log(err);
@@ -123,6 +124,7 @@ export default createStore({
         collection
         .doc(firebase.auth().currentUser.uid).set(data).then(()=>{
           context.commit('changeSavedLoading', false)
+          context.commit('changeSuccessModal', true)
         }).catch((err)=>{
           context.commit("updateLoading", false);
           console.log(err);
