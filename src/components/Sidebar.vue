@@ -35,6 +35,9 @@
           <router-link to="/saved">
             <ion-item> <ion-icon :icon="save"></ion-icon>Saved Animes</ion-item>
           </router-link>
+          <router-link to="/download" v-if="deferredPrompt">
+            <ion-item> <ion-icon :icon="download"></ion-icon>Install Animedom</ion-item>
+          </router-link>
 
           <!-- <router-link class="box" to="/tutor">
             <ion-item> <ion-icon :icon="people"></ion-icon> Find a Tutor </ion-item>
@@ -83,7 +86,7 @@ import {
   IonList,
   menuController,
 } from "@ionic/vue";
-import { add, home, search, listCircle, save } from "ionicons/icons";
+import { add, home, search, listCircle, save, download } from "ionicons/icons";
 export default {
   name: "Menu",
   components: {
@@ -99,6 +102,7 @@ export default {
     return {
       deferredPrompt: "",
       home,
+      download,
       add,
       search,
       listCircle,

@@ -400,26 +400,7 @@ h1 {
     flex-direction: column;
   }
 }
-button {
-  width: 100%;
-  min-width: 200px;
-  margin: 1rem 0 0;
-  background: #18540f;
-  color: #fff;
-  text-transform: uppercase;
-  border: none;
-  padding: 0.7rem 0;
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  outline: none;
-  font-size: 0.7rem;
-  overflow: hidden;
-  position: relative;
-  transition: background 0.2s linear;
-  cursor: pointer;
-}
+
 
 button {
   width: 100%;

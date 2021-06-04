@@ -41,6 +41,11 @@ const routes = [
     component: () => import("@/views/Notifications.vue"),
   },
   {
+    path: "/download",
+    name: "Download",
+    component: () => import("@/views/Download.vue"),
+  },
+  {
     path: "/saved",
     name: "Saved Animes",
     meta: {
