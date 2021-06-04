@@ -32,6 +32,7 @@ export default createStore({
     logOut(state){
       state.user = null
     localStorage.setItem('user', null);
+    location.reload()
     },
     addGenresAnimeList(state, data){
       state.genresAnimeList = data
