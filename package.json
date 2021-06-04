@@ -1,8 +1,8 @@
 {
-  "name": "studeemobile",
+  "name": "Animedom",
   "version": "0.0.1",
   "private": true,
-  "description": "An Ionic project",
+  "description": "An Ads free, open source anime streaming site",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
