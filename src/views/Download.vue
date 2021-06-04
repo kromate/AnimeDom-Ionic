@@ -5,10 +5,7 @@
         <img src="@/assets/general/Female.png" alt="" class="resImg" />
 
         <p class="text-xl mt-3 text-center">Open source, ads free anime platform</p>
-        <button
-          class="nominate-button movie-btn w-100"
-          @click="saveAnime({ link: $route.query.link, img: $route.query.image })"
-        >
+        <button class="nominate-button movie-btn w-100" @click="promptInstall()">
           <ion-icon :icon="download" class="text-xl mr-4"></ion-icon> Click to install
         </button>
       </div>
@@ -52,8 +49,6 @@ export default {
   },
 
   created() {
-    this.changeMode();
-    this.handleConnectionChange();
     this.listenForInstall();
     this.checkPWA();
   },
