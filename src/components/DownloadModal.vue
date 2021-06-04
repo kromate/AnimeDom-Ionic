@@ -78,8 +78,8 @@ export default {
           this.loading = false;
           // this.Eload = false;
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          this.$store.commit("changeErrorModal", true);
           this.loading = false;
           // this.Eload = false;
           this.Error = true;

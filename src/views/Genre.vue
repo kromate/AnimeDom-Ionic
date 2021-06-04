@@ -59,7 +59,7 @@ export default {
         })
         .catch((err) => {
           console.log(err);
-          alert("something went wrong");
+          this.$store.commit("changeErrorModal", true);
           this.loading = false;
         });
     },
@@ -75,7 +75,7 @@ export default {
         })
         .catch((err) => {
           console.log(err);
-          alert("something went wrong");
+           this.$store.commit("changeErrorModal", true);
           this.loading = false;
         });
     },

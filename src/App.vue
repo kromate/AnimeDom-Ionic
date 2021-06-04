@@ -169,8 +169,8 @@ export default {
         .catch((error) => {
           this.loader = false;
           console.log(error);
-          this.Error = error.message;
           this.t_loading = !this.t_loading;
+           this.errorModal = true;
         });
     },
     google() {
@@ -190,9 +190,8 @@ export default {
         })
         .catch((error) => {
           this.g_loading = !this.g_loading;
-          this.loader = false;
           console.log(error.message);
-          this.Error = error.message;
+          this.errorModal = true;
         });
     },
   },

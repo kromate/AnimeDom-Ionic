@@ -103,7 +103,7 @@ export default createStore({
       const collection = firebase.firestore().collection("users")
       const user = await collection.doc(context.state.user.uid).get().catch((err)=>{
         console.log(err);
-        context.commit("Error");
+        context.commit("changeErrorModal", true);
       })
       if(user.exists){
         collection
@@ -114,6 +114,7 @@ export default createStore({
             context.commit('changeSuccessModal', true)
         }).catch((err)=>{
           context.commit("updateLoading", false);
+          context.commit("changeErrorModal", true);
           console.log(err);
           context.commit("Error");
         })
@@ -130,7 +131,7 @@ export default createStore({
           context.commit('changeSavedLoading', false)
           context.commit('changeSuccessModal', true)
         }).catch((err)=>{
-          context.commit("updateLoading", false);
+          context.commit("changeErrorModal", true);
           console.log(err);
           context.commit("Error");
         })

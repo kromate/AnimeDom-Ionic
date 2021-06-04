@@ -72,7 +72,7 @@ export default {
         })
         .catch((err) => {
           console.log(err);
-          alert("something went wrong");
+           this.$store.commit("changeErrorModal", true);
           this.$store.commit("changeSearchTitle", `Oops, Something went Wrong. Try again later`);
           this.loading = false;
         });
