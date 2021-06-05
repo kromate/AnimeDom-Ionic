@@ -21,7 +21,13 @@
     "register-service-worker": "^1.7.1",
     "vue": "^3.0.0-0",
     "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "vuex": "^4.0.0-0",
+    "is-online": "^9.0.0",
+    "sw-precache-webpack-plugin": "^1.0.0",
+    "vue-disqus": "^4.0.1",
+    "vue-pwa-install": "^1.1.0",
+    "workbox": "^0.0.0",
+    "workbox-recipes": "^6.0.2"
   },
   "devDependencies": {
     "@capacitor/cli": "2.4.4",
