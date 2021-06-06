@@ -151,7 +151,7 @@ export default {
       this.t_loading = !this.t_loading;
 
       const provider = new firebase.auth.TwitterAuthProvider();
-
+      provider.setCustomParameters({ prompt: "select_account" });
       firebase
         .auth()
         .signInWithPopup(provider)
@@ -174,7 +174,7 @@ export default {
       this.g_loading = !this.g_loading;
 
       const provider = new firebase.auth.GoogleAuthProvider();
-
+      provider.setCustomParameters({ prompt: "select_account" });
       firebase
         .auth()
         .signInWithPopup(provider)
