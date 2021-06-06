@@ -42,12 +42,7 @@
         </button>
       </div>
     </Modal>
-    <Modal
-      :showModal="errorModal"
-      title="Error !"
-      sub="Something went wrong, please try again"
-      @close="errorModal = false"
-    >
+    <Modal :showModal="errorModal" title="Error !" :sub="errMsg" @close="errorModal = false">
       <template v-slot:image>
         <ion-icon :icon="warning" class="text-6xl"></ion-icon>
       </template>
@@ -106,6 +101,7 @@ export default {
       notifications,
       g_loading: false,
       t_loading: false,
+      errMsg: "Something went wrong, please try again",
     };
   },
 
@@ -169,6 +165,7 @@ export default {
         .catch((error) => {
           this.loader = false;
           console.log(error);
+          this.errMsg = error.message;
           this.t_loading = !this.t_loading;
           this.errorModal = true;
         });
@@ -190,6 +187,7 @@ export default {
         })
         .catch((error) => {
           this.g_loading = !this.g_loading;
+          this.errMsg = error.message;
           console.log(error.message);
           this.errorModal = true;
         });
