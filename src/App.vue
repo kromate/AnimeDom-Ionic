@@ -77,6 +77,7 @@ import {
   IonButton,
   IonIcon,
 } from "@ionic/vue";
+
 export default {
   name: "App",
   components: {
@@ -122,6 +123,7 @@ export default {
         this.$store.state.successModal = value;
       },
     },
+
     authModal: {
       get() {
         return this.$store.state.authModal;
