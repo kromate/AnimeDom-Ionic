@@ -131,6 +131,7 @@ export default {
         this.$store.state.authModal = value;
       },
     },
+
     show() {
       if (this.$route.meta.requiresGuest) {
         return false;
