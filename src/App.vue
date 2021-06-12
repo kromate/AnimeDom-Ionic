@@ -67,6 +67,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import SideBar from "@/components/Sidebar.vue";
 import { notifications, logOut, logIn } from "ionicons/icons";
+
 import {
   IonApp,
   IonHeader,
