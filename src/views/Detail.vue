@@ -143,6 +143,7 @@ export default {
   methods: {
     saveAnime(data) {
       if (this.$store.state.user) {
+        console.log(data);
         this.$store.commit("selectedSavedAnime", data);
         this.$store.dispatch("saveAnime");
       } else {
@@ -400,7 +401,6 @@ h1 {
     flex-direction: column;
   }
 }
-
 
 button {
   width: 100%;

@@ -153,6 +153,45 @@ export default createStore({
         })
       }
     },
+    async delAnime(context){
+      context.commit('changeSavedLoading', true)
+      const collection = firebase.firestore().collection("users")
+      const user = await collection.doc(context.state.user.uid).get().catch((err)=>{
+        console.log(err);
+        context.commit("changeErrorModal", true);
+      })
+      if(user.exists){
+        collection
+        .doc(firebase.auth().currentUser.uid)
+        .update({
+          saved:firebase.firestore.FieldValue.arrayUnion(context.state.selectedSavedAnime)}).then(()=>{
+            context.commit('changeSavedLoading', false)
+            context.commit('changeSuccessModal', true)
+        }).catch((err)=>{
+          context.commit("updateLoading", false);
+          context.commit("changeErrorModal", true);
+          console.log(err);
+          context.commit("Error");
+        })
+      }else{
+        const data =   {
+          id: context.state.user.uid,
+          email: context.state.user.email,
+          saved: [context.state.selectedSavedAnime],
+          playlist: [],
+
+        }
+        collection
+        .doc(firebase.auth().currentUser.uid).set(data).then(()=>{
+          context.commit('changeSavedLoading', false)
+          context.commit('changeSuccessModal', true)
+        }).catch((err)=>{
+          context.commit("changeErrorModal", true);
+          console.log(err);
+          context.commit("Error");
+        })
+      }
+    },
   },
   modules: {
   }

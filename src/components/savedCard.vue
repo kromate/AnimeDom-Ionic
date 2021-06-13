@@ -54,8 +54,9 @@ export default {
     };
   },
   methods: {
-    del(value) {
-      console.log(value);
+    del(link, image) {
+      this.$store.commit("selectedSavedAnime", { link: link, img: image });
+      this.$store.dispatch("delAnime");
     },
     comp(value) {
       console.log();
