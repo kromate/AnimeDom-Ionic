@@ -203,6 +203,7 @@ export default {
 <style scoped>
 * {
   font-family: "KoHo", sans-serif;
+  box-sizing: border-box !important;
 }
 body {
   background: #000 !important;

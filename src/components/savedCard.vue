@@ -17,7 +17,7 @@
         </button>
         <button
           style="flex-basis:20"
-          class="nominate-button movie-btn ml-2"
+          class="ml-2 del"
           :href="data.link"
           @click="direct(data.link, data.img)"
         >
@@ -30,6 +30,7 @@
 
 <script>
 import DescriptionModal from "@/components/DownloadModal.vue";
+import { add, home, search, listCircle, save, download } from "ionicons/icons";
 export default {
   name: "animeCard",
   components: { DescriptionModal },
@@ -119,5 +120,25 @@ export default {
 }
 .movie-card__details {
   width: 150px;
+}
+.del {
+
+  width: 38.5px;
+  height: 38.5px;
+  /* margin: 1rem 0 0; */
+  background: #18540f;
+  color: #fff;
+  border: none;
+  padding: 0.2rem 0;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  font-size: 0.7rem;
+  overflow: hidden;
+  position: relative;
+  transition: background 0.2s linear;
+  cursor: pointer;
 }
 </style>
