@@ -6,9 +6,9 @@
     </div>
     <div class="movie-card__details">
       <h4 class="movie-card__details__title text-l text-center ">{{ comp(data.link) }}</h4>
-      <div class="flex">
+      <div class="flex items-center justify-center mt-2">
         <button
-          style="flex-basis:70"
+          style="flex-basis:60"
           class="nominate-button movie-btn w-100"
           :href="data.link"
           @click="direct(data.link, data.img)"
@@ -16,12 +16,12 @@
           View
         </button>
         <button
-          style="flex-basis:20"
+          style="flex-basis:30"
           class="ml-2 del"
           :href="data.link"
-          @click="direct(data.link, data.img)"
+          @click="del(data.link, data.img)"
         >
-          V
+          <ion-icon :icon="trash"></ion-icon>
         </button>
       </div>
     </div>
@@ -31,9 +31,10 @@
 <script>
 import DescriptionModal from "@/components/DownloadModal.vue";
 import { trash } from "ionicons/icons";
+import { IonIcon } from "@ionic/vue";
 export default {
   name: "animeCard",
-  components: { DescriptionModal },
+  components: { DescriptionModal, IonIcon },
 
   props: {
     type: {
@@ -49,10 +50,13 @@ export default {
     return {
       showModal: false,
       link: "",
-      trash
+      trash,
     };
   },
   methods: {
+    del(value) {
+      console.log(value);
+    },
     comp(value) {
       console.log();
       return value.split("/")[2];
@@ -102,7 +106,6 @@ export default {
 
 .movie-card .nominate-button {
   width: 100%;
-  margin: 1rem 0 0;
   background: #18540f;
   color: #fff;
   text-transform: uppercase;
@@ -123,8 +126,7 @@ export default {
   width: 150px;
 }
 .del {
-
-  width: 38.5px;
+  width: 42px;
   height: 38.5px;
   /* margin: 1rem 0 0; */
   background: #18540f;
