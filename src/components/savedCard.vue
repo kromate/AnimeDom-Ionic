@@ -56,7 +56,9 @@ export default {
   methods: {
     del(link, image) {
       this.$store.commit("selectedSavedAnime", { link: link, img: image });
-      this.$store.dispatch("delAnime");
+      this.$store.dispatch("delAnime").then(() => {
+        this.$emit("reload");
+      });
     },
     comp(value) {
       console.log();

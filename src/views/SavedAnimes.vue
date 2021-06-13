@@ -5,7 +5,7 @@
         <div>
           <h1 class="green text-4xl font-bold mb-3">Your Saved Animes</h1>
           <div class="flex flex-wrap justify-start ac">
-            <savedCard v-for="n in SavedAnimes" :data="n" :key="n" type="recent" />
+            <savedCard v-for="n in SavedAnimes" :data="n" :key="n" type="recent" @reload="init()" />
           </div>
         </div>
       </main>
