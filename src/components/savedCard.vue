@@ -6,14 +6,24 @@
     </div>
     <div class="movie-card__details">
       <h4 class="movie-card__details__title text-l text-center ">{{ comp(data.link) }}</h4>
-
-      <button
-        class="nominate-button movie-btn w-100"
-        :href="data.link"
-        @click="direct(data.link, data.img)"
-      >
-        View
-      </button>
+      <div class="flex">
+        <button
+          style="flex-basis:70"
+          class="nominate-button movie-btn w-100"
+          :href="data.link"
+          @click="direct(data.link, data.img)"
+        >
+          View
+        </button>
+        <button
+          style="flex-basis:20"
+          class="nominate-button movie-btn ml-2"
+          :href="data.link"
+          @click="direct(data.link, data.img)"
+        >
+          V
+        </button>
+      </div>
     </div>
   </article>
 </template>
