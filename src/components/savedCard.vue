@@ -30,7 +30,7 @@
 
 <script>
 import DescriptionModal from "@/components/DownloadModal.vue";
-import { add, home, search, listCircle, save, download } from "ionicons/icons";
+import { trash } from "ionicons/icons";
 export default {
   name: "animeCard",
   components: { DescriptionModal },
@@ -49,6 +49,7 @@ export default {
     return {
       showModal: false,
       link: "",
+      trash
     };
   },
   methods: {
