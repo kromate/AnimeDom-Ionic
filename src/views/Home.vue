@@ -3,7 +3,7 @@
     <div class="flex bg-black mx-auto w-100 ">
       <main class="flex-col mx-auto container" v-if="recentAnimeList.length">
         <div>
-          <h1 class="green text-4xl font-bold mb-3">Recent</h1>
+          <h1 class="green text-4xl font-bold mb-3">Recent Anime</h1>
           <div class="flex flex-wrap justify-start ac">
             <animeCard v-for="n in recentAnimeList" :data="n" :key="n" type="recent" />
           </div>
