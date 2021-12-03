@@ -1,4 +1,5 @@
 <template>
+
   <article class="movie-card md:mr-5 ">
     <DescriptionModal :showModal="showModal" :link="link" @close="showModal = false" />
     <div class="movie-card__image">
@@ -21,6 +22,7 @@
       </button>
     </div>
   </article>
+
 </template>
 
 <script>
