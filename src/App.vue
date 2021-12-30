@@ -130,7 +130,6 @@ export default {
         return this.$store.state.authModal;
       },
       set(value) {
-        console.log(value);
         this.$store.state.authModal = value;
       },
     },
@@ -168,7 +167,6 @@ export default {
         })
         .catch((error) => {
           this.loader = false;
-          console.log(error);
           this.errMsg = error.message;
           this.t_loading = !this.t_loading;
           this.errorModal = true;
@@ -192,7 +190,6 @@ export default {
         .catch((error) => {
           this.g_loading = !this.g_loading;
           this.errMsg = error.message;
-          console.log(error.message);
           this.errorModal = true;
         });
     },

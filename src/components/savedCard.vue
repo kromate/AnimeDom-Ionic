@@ -61,7 +61,6 @@ export default {
       });
     },
     comp(value) {
-      console.log();
       return value.split("/")[2];
     },
     getLinks(link) {

@@ -133,7 +133,6 @@ export default {
         localStorage.setItem("mode", "Stream");
       }
       this.changeMode();
-      console.log(localStorage.getItem("mode"));
     },
     changeMode() {
       if (localStorage.getItem("mode") == null) {

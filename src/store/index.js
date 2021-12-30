@@ -1,8 +1,9 @@
+import "firebase/firestore";
+import "firebase/auth";
+
 /* eslint-disable */
 import { createStore } from 'vuex'
 import firebase from "firebase/app";
-import "firebase/firestore";
-import "firebase/auth";
 
 export default createStore({
   state: {
@@ -107,7 +108,6 @@ export default createStore({
         .then((doc) => {
           if (doc.exists) {
             context.state.SavedAnimes = doc.data().saved;
-            console.log(context.state.SavedAnimes);
           } else {
 
             console.log("Not Found");
