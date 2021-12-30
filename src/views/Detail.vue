@@ -105,12 +105,9 @@
       </div>
     </div>
 
-    <div class="container2" v-else>
-      <div>
-        <Loader w="233.39" h="340" b="8" />
-        <p class="lood">loading....</p>
-      </div>
-    </div>
+
+  <Loader v-else/> 
+  
   </IonContent>
 </template>
 
@@ -129,6 +126,8 @@ export default {
       Episodes: [],
       link: "",
       show: false,
+      showModal: false,
+      
     };
   },
   computed: {
@@ -345,11 +344,7 @@ h1 {
   color: #359c26;
   max-width: 800px;
 }
-.container2 {
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5rem;
-}
+
 .details {
   order: 2;
   flex-basis: 60%;

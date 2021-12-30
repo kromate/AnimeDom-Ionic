@@ -1,7 +1,7 @@
 <template>
   <transition name="slide" appear>
-    <div class="bg" v-if="modal" @click="close($event)">
-      <div v-if="downloadMode">
+    <div class="bg" v-if="showModal" @click="close($event)">
+      <div >
         <div class="card" v-if="options.length && !loading">
           <a
             v-for="(ep, index) in options"
@@ -9,6 +9,8 @@
             :href="ep.link"
             target="_blank"
             class="text-sm"
+
+            download
           >
             {{ ep.name }}
           </a>
@@ -18,7 +20,7 @@
           <Loader />
         </div>
       </div>
-      <div v-else>
+      <!-- <div v-else>
         <div class="card" v-if="options.length && !loading">
           <a
             v-for="(ep, index) in options"
@@ -33,7 +35,7 @@
         <div v-else>
           <Loader />
         </div>
-      </div>
+      </div> -->
     </div>
   </transition>
 </template>
@@ -46,7 +48,7 @@ export default {
     return {
       loading: false,
       options: [],
-      downloadMode: localStorage.getItem("mode") == "Download",
+      // downloadMode: localStorage.getItem("mode") == "Download",
     };
   },
 
@@ -58,7 +60,7 @@ export default {
   watch: {
     modal() {
       this.getDetails();
-      this.downloadMode = localStorage.getItem("mode") == "Download";
+      // this.downloadMode = localStorage.getItem("mode") == "Download";
     },
   },
   methods: {

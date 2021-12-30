@@ -1,9 +1,13 @@
 <template>
+  <div class="container2" >
   <div class="lds-facebook">
     <div></div>
     <div></div>
     <div></div>
   </div>
+
+  </div>
+
 </template>
 
 <script>
@@ -47,5 +51,11 @@ export default {};
     top: 24px;
     height: 32px;
   }
+}
+
+.container2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
 }
 </style>
