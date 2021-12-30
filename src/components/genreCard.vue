@@ -35,7 +35,7 @@ export default {
   },
   props: {
     cardsIcon: {
-      type: Array,
+      type: Object,
       required: true,
     },
   },

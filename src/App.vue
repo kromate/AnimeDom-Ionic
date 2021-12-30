@@ -1,29 +1,6 @@
 <template>
   <ion-app>
-    <ion-header :translucent="true" v-if="true">
-      <ion-toolbar>
-        <ion-title>{{ $route.name }}</ion-title>
-
-        <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
-          <ion-menu-button menu="main-menu"> </ion-menu-button>
-        </ion-buttons>
-
-        <ion-buttons slot="end">
-          <ion-button @click="logout()" v-if="user">
-            <ion-icon :icon="logOut" class="IonSize"></ion-icon>
-          </ion-button>
-          <ion-button @click="authModal = true" v-else>
-            <ion-icon :icon="logIn" class="IonSize"></ion-icon>
-          </ion-button>
-          <ion-button>
-            <router-link to="/notifications">
-              <ion-icon :icon="notifications" class="IonSize"></ion-icon>
-            </router-link>
-          </ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
+<TopHeader/>
     <SideBar />
     <Modal
       :showModal="authModal"
@@ -57,7 +34,7 @@
         <ion-icon :icon="checkmarkCircle" class="text-6xl"></ion-icon>
       </template>
     </Modal>
-    <router-view id="main" class="router" />
+    <router-view  id="main"/>
   </ion-app>
 </template>
 
@@ -66,41 +43,21 @@ import { save, checkmarkCircle, warning } from "ionicons/icons";
 import firebase from "firebase/app";
 import "firebase/auth";
 import SideBar from "@/components/Sidebar.vue";
-import { notifications, logOut, logIn } from "ionicons/icons";
-
-import {
-  IonApp,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-  IonButtons,
-  IonMenuButton,
-  IonButton,
-  IonIcon,
-} from "@ionic/vue";
+import { IonApp, IonIcon} from "@ionic/vue";
+import TopHeader from "./components/TopHeader.vue";
 
 export default {
   name: "App",
   components: {
-    IonApp,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
-    IonButtons,
-    IonMenuButton,
-    SideBar,
-    IonButton,
-    IonIcon,
-  },
+    IonApp,  SideBar,
+    IonIcon, TopHeader, 
+},
 
   data() {
     return {
       warning,
       checkmarkCircle,
       save,
-      logIn,
-      logOut,
-      notifications,
       g_loading: false,
       t_loading: false,
       errMsg: "Something went wrong, please try again",
@@ -146,9 +103,7 @@ export default {
     },
   },
   methods: {
-    logout() {
-      this.$store.commit("logOut");
-    },
+
 
     twitter() {
       this.t_loading = !this.t_loading;
