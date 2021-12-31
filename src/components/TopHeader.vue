@@ -27,6 +27,9 @@
 <script>
 import { IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton, IonButton, IonIcon} from "@ionic/vue";
 import { notifications, logOut, logIn } from "ionicons/icons";
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+
 
 export default {
 name: "TopHeader",
@@ -43,25 +46,29 @@ methods:{
 },
 
 setup(){
+  const store = useStore()
+   const authModal = computed({
+         get() {
+        return store.state.authModal;
+      },
+      set(value) {
+        store.state.authModal = value;
+      },
+   })
+
+   const user = computed(()=> store.state.user)
+
 return{
-      logIn,
-      logOut,
-      notifications,
+      logIn, logOut, notifications,
+      authModal, user
 }
 },
 
-computed:{
-      authModal: {
-      get() {
-        return this.$store.state.authModal;
-      },
-      set(value) {
-        this.$store.state.authModal = value;
-      },
-        user() {
-      return this.$store.state.user;
-    },
-    },
+
+mounted(){
+  console.log(
+    this
+  );
 }
 
 }

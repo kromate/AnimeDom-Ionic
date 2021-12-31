@@ -5,8 +5,8 @@
       <div class="details mx-2">
         <h2>{{ data.name }}</h2>
 
-        <p>
-          <span class="title ">
+        <p class="px-4">
+          <span class="font-bold text-2xl underline ">
             summary
           </span>
           <br />
@@ -30,14 +30,14 @@
         </p>
 
         <p v-if="data.status">
-          <span class="title">
+          <span class="font-bold text-2xl underline">
             Status
           </span>
           <br />
           {{ data.status }}
         </p>
         <p v-if="data.otherNames">
-          <span class="title">
+          <span class="font-bold text-2xl underline">
             Other Names
           </span>
           <br />
@@ -45,7 +45,7 @@
         </p>
 
         <p v-if="data.release">
-          <span class="title">
+          <span class="font-bold text-2xl underline">
             Release
           </span>
           <br />
@@ -53,7 +53,7 @@
         </p>
 
         <p v-if="data.type">
-          <span class="title">
+          <span class="font-bold text-2xl underline">
             Type
           </span>
           <br />
@@ -61,7 +61,7 @@
         </p>
 
         <p v-if="data.genre">
-          <span class="title">
+          <span class="font-bold text-2xl underline">
             Genre
           </span>
           <br />
@@ -69,7 +69,7 @@
         </p>
 
         <div class="epic">
-          <span class="title ept">
+          <span class="font-bold text-2xl underline ept">
             Episodes
           </span>
           <br />
@@ -245,11 +245,6 @@ img {
   position: sticky;
   top: 70px;
   /* right: 54px; */
-}
-.title {
-  font-weight: 700;
-  font-size: 1.4rem;
-  text-decoration: underline;
 }
 .priBtn {
   margin: 0px 6px;
