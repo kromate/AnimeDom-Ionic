@@ -35,38 +35,7 @@
           <router-link to="/saved">
             <ion-item> <ion-icon :icon="save"></ion-icon>Saved Animes</ion-item>
           </router-link>
-          <!-- <router-link to="/download" v-if="deferredPrompt">
-            <ion-item> <ion-icon :icon="download"></ion-icon>Install Animedom</ion-item>
-          </router-link> -->
 
-          <!-- <router-link class="box" to="/tutor">
-            <ion-item> <ion-icon :icon="people"></ion-icon> Find a Tutor </ion-item>
-          </router-link>
-
-          <router-link class="box" to="/profile">
-            <ion-item> <ion-icon :icon="personCircle"></ion-icon> Profile </ion-item>
-          </router-link>
-
-          <router-link class="box" to="/questions">
-            <ion-item> <ion-icon :icon="helpCircle"></ion-icon> Ask Questions </ion-item>
-          </router-link>
-
-          <router-link class="box" to="/chat">
-            <ion-item> <ion-icon :icon="chatbubbles"></ion-icon> Chat </ion-item>
-          </router-link>
-
-          <router-link class="box" to="/market">
-            <ion-item> <ion-icon :icon="home"></ion-icon> Market place </ion-item>
-          </router-link>
-
-          <router-link class="box" to="/tte">
-            <ion-item> <ion-icon :icon="hourglass"></ion-icon> T/T/E </ion-item>
-          </router-link>
-
-          <div class="row" style="cursor:pointer">
-            <ion-item @click="signOut"> <ion-icon :icon="exit"></ion-icon> Sign Out </ion-item>
-          </div>
-         -->
         </ion-list>
       </div>
     </ion-content>
