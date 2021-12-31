@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'VUE_APP'
 import path from 'path'
-import vue from '@vitejs/plugin-vue'
+import vue from '@VUE_APPjs/plugin-vue'
 
-// https://vitejs.dev/config/
+// https://VUE_APPjs.dev/config/
 export default defineConfig({
   plugins: [vue()],
     resolve: {

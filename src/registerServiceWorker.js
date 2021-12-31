@@ -13,9 +13,9 @@ pageCache();
 imageCache();
 googleFontsCache();
 
-// import.meta.env.NODE_ENV === "production"
+// process.env.NODE_ENV === "production"
 
-  register(`${import.meta.env.BASE_URL}sw.js`, {
+  register(`${process.env.BASE_URL}sw.js`, {
     ready() {
       console.log(
         "App is being served from cache by a service worker.\n" +
