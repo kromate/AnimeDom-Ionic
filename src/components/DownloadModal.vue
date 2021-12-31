@@ -7,7 +7,7 @@
             v-for="(ep, index) in options"
             :key="index"
             :href="ep.link"
-            target="_blank"
+            target=" "
             class="text-sm"
 
             download
