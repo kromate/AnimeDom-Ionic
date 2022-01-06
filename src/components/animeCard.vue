@@ -5,7 +5,7 @@
     <div class="movie-card__image">
       <img :src="data.image" alt="Poster for Project Power" />
     </div>
-
+ 
     <div class="movie-card__details">
       <h4 class="movie-card__details__title text-xs text-center">{{ data.name }}</h4>
       <p class="movie-card__details__release-year text-center font-normal text-sm">

@@ -3,14 +3,14 @@
     <div class="flex bg-black mx-auto w-100 ">
       <main class="flex-col mx-auto container" v-if="genreAnimeList.length">
         <div>
-          <h1 class="green text-4xl font-bold mb-3">Genres</h1>
+          <h1 class="green text-4xl font-bold mb-3 pl-4">Genres</h1>
           <div class="flex flex-wrap justify-start ac">
             <genreCard v-for="n in genreAnimeList" :cardsIcon="n" :key="n" class="genreCard" />
           </div>
         </div>
         <div>
-          <h1 class="green text-xl font-bold mb-3">{{ selected }}</h1>
-          <div class="flex flex-wrap justify-start ac" v-if="!loading">
+          <h1 class="green text-xl font-bold mb-3 pl-4">{{ selected }}</h1>
+          <div class="flex flex-wrap md:justify-start justify-between w-full px-4 gap-5" v-if="!loading">
             <genresListingCard v-for="n in genresAnimeList" :data="n" :key="n" />
           </div>
           <Loader v-else />

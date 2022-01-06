@@ -3,7 +3,7 @@
     <div class="flex bg-black mx-auto w-100 ">
       <main class="flex-col mx-auto container" v-if="true">
         <div>
-          <h1 class="green text-4xl font-bold mb-3">Search</h1>
+          <h1 class="green text-4xl font-bold mb-3 pl-4">Search</h1>
           <div class="container__item">
             <form class="form" @submit.prevent="search()" @keyup.enter="search()">
               <input
@@ -23,8 +23,8 @@
           </div>
         </div>
         <div>
-          <h1 class="green text-xl font-bold mb-3">{{ title }}</h1>
-          <div class="flex flex-wrap justify-start ac">
+          <h1 class="green md:text-2xl  font-bold my-3 pl-4">{{ title }}</h1>
+          <div class="flex flex-wrap md:justify-start justify-between w-full px-4 gap-5">
             <searchCard v-for="n in searchAnimeList" :data="n" :key="n" type="popular" />
           </div>
           <Loader v-if="loading" />

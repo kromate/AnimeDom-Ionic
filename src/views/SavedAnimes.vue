@@ -3,8 +3,8 @@
     <div class="flex bg-black mx-auto w-100 ">
       <main class="flex-col mx-auto container" v-if="SavedAnimes.length">
         <div>
-          <h1 class="green text-4xl font-bold mb-3">Your Saved Animes</h1>
-          <div class="flex flex-wrap justify-start ac">
+          <h1 class="green text-4xl font-bold mb-3 pl-4">Your Saved Animes</h1>
+          <div class="flex flex-wrap md:justify-start justify-between w-full px-4 gap-5">
             <savedCard v-for="n in SavedAnimes" :data="n" :key="n" type="recent" @reload="init()" />
           </div>
         </div>

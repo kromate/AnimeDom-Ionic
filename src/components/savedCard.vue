@@ -1,5 +1,5 @@
 <template>
-  <article class="movie-card md:mr-5 ">
+  <article class="flex flex-col text-white  my-3 justify-between  items-center">
     <DescriptionModal :showModal="showModal" :link="link" @close="showModal = false" />
     <div class="movie-card__image">
       <img :src="data.img" alt="Poster for Project Power" />
@@ -42,7 +42,7 @@ export default {
       required: true,
     },
     data: {
-      type: Array,
+      type: Object,
       required: true,
     },
   },
@@ -106,7 +106,7 @@ export default {
   border-color: rgba(27, 27, 27, 0.62);
 }
 
-.movie-card .nominate-button {
+.nominate-button {
   width: 100%;
   background: #18540f;
   color: #fff;

@@ -4,13 +4,13 @@
       <main class="flex-col mx-auto container" v-if="recentAnimeList.length">
         <div>
           <h1 class="green text-4xl font-bold pl-4">Recent</h1>
-          <div class="flex flex-wrap md:justify-start justify-between w-full0 px-4 gap-5">
+          <div class="flex flex-wrap md:justify-start justify-between w-full px-4 gap-5">
             <animeCard v-for="n in recentAnimeList" :data="n" :key="n" type="recent" class="" />
           </div>
         </div>
         <div class="mt-12">
           <h1 class="green text-4xl font-bold pl-4">Popular</h1>
-          <div class="flex flex-wrap  md:justify-start justify-between w-full0 px-4 gap-5 ">
+          <div class="flex flex-wrap  md:justify-start justify-between w-full px-4 gap-5 ">
             <animeCard v-for="n in popularAnimeList" :data="n" :key="n" type="popular" />
           </div>
         </div>
