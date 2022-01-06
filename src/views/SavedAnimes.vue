@@ -1,11 +1,15 @@
 <template>
   <IonContent class="mx-auto">
     <div class="flex bg-black mx-auto w-100 ">
-      <main class="flex-col mx-auto container" v-if="SavedAnimes.length">
+      <main class="flex-col mx-auto container" v-if="!SavedAnimesLoading">
         <div>
           <h1 class="green text-4xl font-bold mb-3 pl-4">Your Saved Animes</h1>
-          <div class="flex flex-wrap md:justify-start justify-between w-full px-4 gap-5">
+          <div class="flex flex-wrap md:justify-start justify-between w-full px-4 gap-5" v-if="SavedAnimes.length">
             <savedCard v-for="n in SavedAnimes" :data="n" :key="n" type="recent" @reload="init()" />
+          </div>
+
+          <div v-else class="green text-center text-xl font-semibold">
+            <span>You have no saved anime yet</span>
           </div>
         </div>
       </main>
@@ -31,6 +35,9 @@ export default {
     SavedAnimes() {
       return this.$store.state.SavedAnimes;
     },
+    SavedAnimesLoading() {
+      return this.$store.state.SavedAnimesLoading;
+    },
   },
   methods: {
     init() {
@@ -38,6 +45,7 @@ export default {
     },
   },
   mounted() {
+    console.log(this.SavedAnimes);
     this.init();
   },
 };

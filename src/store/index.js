@@ -19,6 +19,7 @@ export default createStore({
     genresAnimeList:[],
     saved:[],
     SavedAnimes:[],
+    SavedAnimesLoading:[],
     savedLoading:false,
     authModal: false,
     successModal: false,
@@ -108,6 +109,7 @@ export default createStore({
   actions: {
     async getSavedAnimes(context){
       context.state.SavedAnimes = [];
+      context.state.SavedAnimesLoading = true
       const collection = firebase.firestore().collection("users");
       collection
         .doc(context.state.user.uid)
@@ -115,8 +117,9 @@ export default createStore({
         .then((doc) => {
           if (doc.exists) {
             context.state.SavedAnimes = doc.data().saved;
+            context.state.SavedAnimesLoading = false
           } else {
-
+            context.state.SavedAnimesLoading = false
             console.log("Not Found");
           }
         });

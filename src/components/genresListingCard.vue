@@ -10,7 +10,7 @@
       </p>
 
       <button class="nominate-button movie-btn w-100" @click="direct(data.link, data.image)">
-        {{ type == "recent" ? "Download" : "View" }}
+         View
       </button>
     </div>
   </article>

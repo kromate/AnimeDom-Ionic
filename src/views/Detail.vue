@@ -16,14 +16,14 @@
           <button
             v-if="savedLoading"
             class="nominate-button movie-btn w-100"
-            @click="saveAnime({ link: $route.query.link, img: $route.query.image })"
+            @click="saveAnime({ link: $route.query.link, img: $route.query.image, count:0 })"
           >
             <Loader />
           </button>
           <button
             v-else
             class="nominate-button movie-btn w-100"
-            @click="saveAnime({ link: $route.query.link, img: $route.query.image })"
+            @click="saveAnime({ link: $route.query.link, img: $route.query.image, count:0 })"
           >
             <ion-icon :icon="save" class="text-xl mr-4"></ion-icon> Save for later
           </button>
@@ -142,7 +142,6 @@ export default {
   methods: {
     saveAnime(data) {
       if (this.$store.state.user) {
-        console.log(data);
         this.$store.commit("selectedSavedAnime", data);
         this.$store.dispatch("saveAnime");
       } else {

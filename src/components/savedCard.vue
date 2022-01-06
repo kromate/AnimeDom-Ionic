@@ -1,6 +1,6 @@
 <template>
   <article class="flex flex-col text-white  my-3 justify-between  items-center">
-    <DescriptionModal :showModal="showModal" :link="link" @close="showModal = false" />
+    <LastViewModal :showModal="showModal" :count="data.count" @close="showModal = false"/>
     <div class="movie-card__image">
       <img :src="data.img" alt="Poster for Project Power" />
     </div>
@@ -18,8 +18,15 @@
         <button
           style="flex-basis:30"
           class="ml-2 del"
+          @click="showModal = true;"
+        >
+          <ion-icon :icon="eye"></ion-icon>
+        </button>
+        <button
+          style="flex-basis:30"
+          class="ml-2 del"
           :href="data.link"
-          @click="del(data.link, data.img)"
+          @click="del(data.link, data.img, data.count)"
         >
           <ion-icon :icon="trash"></ion-icon>
         </button>
@@ -29,12 +36,12 @@
 </template>
 
 <script>
-import DescriptionModal from "@/components/DownloadModal.vue";
-import { trash } from "ionicons/icons";
+import { trash, eye } from "ionicons/icons";
 import { IonIcon } from "@ionic/vue";
+import LastViewModal from "./LastViewModal.vue";
 export default {
   name: "animeCard",
-  components: { DescriptionModal, IonIcon },
+  components: {  IonIcon, LastViewModal },
 
   props: {
     type: {
@@ -50,12 +57,12 @@ export default {
     return {
       showModal: false,
       link: "",
-      trash,
+      trash,eye,
     };
   },
   methods: {
-    del(link, image) {
-      this.$store.commit("selectedSavedAnime", { link: link, img: image });
+    del(link, image, count) {
+      this.$store.commit("selectedSavedAnime", { link: link, img: image, count:count  });
       this.$store.dispatch("delAnime").then(() => {
         this.$emit("reload");
       });
@@ -78,7 +85,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 .movie-card {
   display: flex;
   flex-direction: column;
