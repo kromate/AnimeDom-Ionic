@@ -1,6 +1,7 @@
 <template>
+
   <ion-app>
-<TopHeader/>
+    <TopHeader/>
     <SideBar />
     <Modal
       :showModal="authModal"
@@ -36,6 +37,7 @@
     </Modal>
     <router-view  id="main"/>
   </ion-app>
+
 </template>
 
 <script>
